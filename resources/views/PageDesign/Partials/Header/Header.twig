@@ -106,9 +106,12 @@
 
 
 <div class="container-max page-header">
-      <a href="javascript: suchfeld()"><button class="search-trigger btn">
-        <i data-plentyflow-element="text, link" class="fa fa-search sm-up"></i>
-      </button></a>
+    <a href="javascript:suchfeld();">
+        <div id="searchBox" class="hidden-lg-up cmp collapse {% if services.template.isSearch() %} in{% endif %}">
+          {# TODO: needs to be defined by plenty, start level is SECTION #}
+          <item-search template="#vue-item-search"></item-search>
+        </div>
+    </a>
 
     {% if enableCurrencySelect == "true" %}
         <div id="currencySelect" class="cmp cmp-currency-select collapse">
