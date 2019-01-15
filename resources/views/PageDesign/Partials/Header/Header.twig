@@ -106,10 +106,12 @@
 
 
 <div class="container-max page-header">
-    <div id="searchBox" class="hidden-lg-up cmp collapse {% if services.template.isSearch() %} in{% endif %}">
-        {# TODO: needs to be defined by plenty, start level is SECTION #}
-        <item-search template="#vue-item-search"></item-search>
-    </div>
+    <a href="javascript:suchfeld();">
+        <div id="searchBox" class="hidden-lg-up cmp collapse {% if services.template.isSearch() %} in{% endif %}">
+          {# TODO: needs to be defined by plenty, start level is SECTION #}
+          <item-search template="#vue-item-search"></item-search>
+        </div>
+    </a>
 
     {% if enableCurrencySelect == "true" %}
         <div id="currencySelect" class="cmp cmp-currency-select collapse">
@@ -183,3 +185,46 @@
         </div>
     </shop-country-settings>
 </div>
+
+<div id="sucheSchatten" style="width: 100%; height: 100%; display: none; padding: 15px;">
+  <div id="suchfeldContainer" style="min-width: 340px; width: 40%; overflow: hidden;">
+    <div style="text-align: center;" >
+      <h1>Suchen</h1>
+      <a href="javascript: suchfeld()"><button class="close" style="position: absolute; top: 15px; right: 15px;"></button></a>
+      <hr></hr>
+      <div class="input-unit">
+        <input id="suchfeld-input" style="width: 100%; min-width: 290px;" onkeydown="enterPressed()"></input>
+        <label>Suchbegriff</label>
+      </div>
+      <a class="suchbutton btn btn-primary" href="javascript: suche()">Suchen</a>
+      <br></br>
+    </div>
+  </div>
+</div>
+
+<script language="javascript" type="text/javascript">
+    var aktiv = false;
+
+    function suchfeld(){
+        switch (aktiv){
+            case false:
+                aktiv = true;
+                document.getElementById("sucheSchatten").style.display = "inline";
+                break;
+            case true:
+                aktiv = false;
+                document.getElementById("sucheSchatten").style.display = "none";
+                break;
+        }
+    }
+
+    function suche(){
+        window.location.href = "/search/?query=" + document.getElementById("suchfeld-input").value.replace(" ", "%20");
+    }
+
+    function enterPressed(){
+        if(event.key == 'Enter') {
+            suche();
+        }
+    }
+</script>
