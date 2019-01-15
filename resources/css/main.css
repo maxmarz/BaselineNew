@@ -1,0 +1,93 @@
+.carousel-item{
+  min-height: 400px;
+  width: 100%;
+  background-size: cover;
+}
+
+.carousel{
+  height: 100% !important;
+}
+
+.category-banner{
+  background-image: url('https://plentyflow.plentymarkets-cloud02.com/documents/category/18/photo-1445384763658-0400939829cd.jpeg');
+  background-position: 0px 30%;
+}
+
+/* Badge */
+.badge {
+  display: inline-block;
+  padding: 0.25em 0.4em;
+  font-size: 75%;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25rem;
+  position: relative;
+  top: -1px;
+}
+
+.badge-secondary {
+  color: #fff;
+  background-color: #6c757d;
+}
+
+.badge-secondary[href]:hover, .badge-secondary[href]:focus {
+  color: #fff;
+  text-decoration: none;
+  background-color: #545b62;
+}
+/* End Badge */
+ 
+#suchfeldContainer{
+  margin: auto;
+  position: relative;
+  background-color: white;
+  z-index: 9999;
+}
+
+#sucheSchatten{
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 9998;
+}
+
+@media screen and (min-width: 4096px) {
+  .carousel-item {
+    height: 2000px;
+  }
+}
+
+@media screen and (max-width: 4096px) {
+  .carousel-item {
+    height: 1000px;
+  }
+}
+
+@media screen and (max-width: 2100px) {
+  .carousel-item {
+    height: 700px;
+  }
+}
+
+
+@media screen and (max-width: 1200px) {
+  .carousel-item {
+    height: 600px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .carousel-item {
+    height: 400px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .carousel-item {
+    height: 250px;
+  }
+}
