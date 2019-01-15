@@ -34,55 +34,61 @@
         #}
 
         <div class="homepage" data-plentyflow-pagename="Startseite" data-plentyflow-homepage="true">
-            <div class="swiper-container" id="home-slider" data-plentyflow-section="Slider">
-                <div class="swiper-wrapper">
-                    {% if config('CeresBaseline.default.slider') == "" %}
-                        <div class="swiper-slide">
-                            <div class="silder-img" style="background-image: url('{{ plugin_path('CeresBaseline') }}/images/homepage/baseline-slider-1.jpg');"></div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="silder-img" style="background-image: url('{{ plugin_path('CeresBaseline') }}/images/homepage/baseline-slider-2.jpg');"></div>
-                        </div>
-                    {% else %}
-                        {% for catID in sliderCategories %}
-
-                            {% set cat = services.category.get(catID,lang) %}
-                            {#
-                                <pre>{{ cat.details|json_encode }}</pre>
-                            #}
-                            {% if cat is not null %}
-                                {% set displayedSliders = displayedSliders | merge([catID]) %}
-                                <div class="swiper-slide" data-plentyflow-modul="Slide-{{ catID }}">
-                                    <div class="silder-img" style="background-image: url('documents/{{ cat.details.first.imagePath }}');">
-                                        <div class="container slider-content">
-                                            <div class="text-center-xs">
-                                                <div class="row">
-                                                    <div class="col-xs-12 col-sm-11 offset-sm-4 col-md-7 offset-md-6  col-lg-6 offset-lg-6">
-                                                        {% if loop.first %}
-                                                            <h1 data-plentyflow-element="title">{{ cat.details.first.name }}</h1>
-                                                        {% else %}
-                                                            <h2 data-plentyflow-element="title" class="h1">{{ cat.details.first.name }}</h2>
-                                                        {% endif %}
-                                                        <p data-plentyflow-element="text">{{ cat.details.first.description }}</p>
-                                                        <a data-plentyflow-element="text, button" href="{{ cat.details.first.description2 }}" class="btn btn-primary">{{ cat.details.first.shortDescription }}</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            {% endif %}
-
-                        {% endfor %}
-                    {% endif %}
-
-                </div>
-                <!-- Add Pagination -->
-                <div class="swiper-pagination"></div>
-                <!-- Add Arrows -->
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
-            </div>
+          
+          <section id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+              <ol class="carousel-indicators">
+                  <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+              </ol>
+              <span></span>
+              <div class="carousel-inner" style="position: relative;">
+                  <div class="carousel-item active" style="background-image: url(https://images.pexels.com/photos/1462637/pexels-photo-1462637.jpeg);">
+                      <div class="carousel-caption d-none d-md-block" style="background-color: lightgrey; opacity: 0.8;">
+                          {% if (companyLogoNav is empty)  %}
+                            <img src="{{ plugin_path('CeresEigenesBaseline') }}/images/baseline-logo.png" style="width: 50%; max-width: 400px;"></img>
+                          {% else %}
+                            <img src="{{ companyLogoNav }}" style="width: 50%; max-width: 400px;"></img>
+                          {% endif %}
+                          <p>
+                              <a href="" class="btn-own btn-outline-dark" style="width: 40%; z-index: 11;">Mehr erfahren</a>
+                          </p>
+                      </div>
+                  </div>
+                  <div class="carousel-item" style="background-image: url(https://cdn02.plentymarkets.com/qukdye15abpw/frontend/Bilder_testbilder/computer_index.jpg);">
+                      <div class="carousel-caption d-none d-md-block" style="background-color: lightgrey; opacity: 0.8;">
+                        {% if (companyLogoNav is empty)  %}
+                          <img src="{{ plugin_path('CeresEigenesBaseline') }}/images/baseline-logo.png" style="width: 50%; max-width: 400px;"></img>
+                        {% else %}
+                          <img src="{{ companyLogoNav }}" style="width: 50%; max-width: 400px;"></img>
+                        {% endif %}
+                          <p>
+                              <a href="" class="btn-own btn-outline-dark" style="width: 40%; z-index: 11;">Mehr erfahren</a>
+                          </p>
+                      </div>
+                  </div>
+                  <div class="carousel-item" style="background-image: url(https://plentyflow.plentymarkets-cloud02.com/documents/category/18/photo-1445384763658-0400939829cd.jpeg);">
+                      <div class="carousel-caption d-none d-md-block" style="background-color: lightgrey; opacity: 0.8;">
+                        {% if (companyLogoNav is empty)  %}
+                          <img src="{{ plugin_path('CeresEigenesBaseline') }}/images/baseline-logo.png" style="width: 50%; max-width: 400px;"></img>
+                        {% else %}
+                          <img src="{{ companyLogoNav }}" style="width: 50%; max-width: 400px;"></img>
+                        {% endif %}
+                          <p>
+                              <a href="" class="btn-own btn-outline-dark" style="width: 40%; z-index: 11;">Mehr erfahren</a>
+                          </p>
+                      </div>
+                  </div>
+              </div>
+              <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                  <span class="swiper-button-prev" aria-hidden="false"></span>
+                  <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                  <span class="swiper-button-next" aria-hidden="false"></span>
+                  <span class="sr-only">Next</span>
+              </a>
+          </section>
 
 
 
@@ -246,5 +252,3 @@
     {# endif #}
 
 {% endblock %}
-
-
