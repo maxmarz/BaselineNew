@@ -208,9 +208,11 @@
     function suchfeld(){
         switch (aktiv){
             case false:
-                aktiv = true;
-                document.getElementById("sucheSchatten").style.display = "inline";
-                break;
+                if(window.innerWidth){
+                    aktiv = true;
+                    document.getElementById("sucheSchatten").style.display = "inline";
+                    break;
+                }
             case true:
                 aktiv = false;
                 document.getElementById("sucheSchatten").style.display = "none";
