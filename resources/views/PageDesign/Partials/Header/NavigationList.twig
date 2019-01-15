@@ -1,0 +1,26 @@
+{% import "CeresBaseline::Category.Macros.CategoryTree" as Tree %}
+
+{% set megamenu         = config("CeresBaseline.header.megamenu") | find("[0-9]+") %}
+{% if category is defined %}
+    {% set currentCatId = category.id %}
+{% else %}
+    {% set currentCatId = null %}
+{% endif %}
+
+<ul class="nav navbar-nav main-nav pull-lg-left hidden-md-down"
+    data-dropdown-in="fadeIn"
+    data-dropdown-out="fadeOut"
+    data-plentyflow-modul="Menu">
+    {{ Tree.get_nav_bar(
+        categories,
+        "",
+        ceresConfig.header.megamenuLevels,
+        {
+            "1": ceresConfig.header.megamenuItemsStage1,
+            "2": ceresConfig.header.megamenuItemsStage2,
+            "3": ceresConfig.header.megamenuItemsStage3
+        },
+        megamenu,
+        currentCatId
+    ) }}
+</ul>

@@ -1,0 +1,164 @@
+.login {
+	.well {
+		min-height: 270px;
+		hr {
+			border-color: $gray-light;
+			margin-bottom: 1.5rem;
+		}
+	}
+}
+.cmp-address-list .dropdown-toggle:after{
+	content: "";
+}
+.cmp-address-list .items>div:first-child {
+	border: 0px;
+}
+.item-inner {
+	border: 1px solid $gray-light !important;
+}
+.cmp-method-list .method-list-item input:checked+label {
+	box-shadow: none;
+	border-color: $brand-primary;
+}
+.cmp-address-list .item input:checked+.item-inner {
+	background-color: $gray-lighter2;
+	color: $gray-darker;
+}
+.registration {
+	margin-top: 2rem;
+}
+
+.registration {
+	h1.h2 {
+		text-align: center;
+	}
+}
+
+.checkout{
+	h1.h2 {
+		text-align: center;
+	}
+	.basket-items-list .item{
+		padding-left: 0;
+		padding-right: 0;
+	}
+
+	.login-register-title {
+		font-size: 1em;
+		text-transform: uppercase;
+		text-align: center;
+	}
+
+	.cmp-address-list,
+	.form-check-label {
+		transition: all .3s ease;
+	}
+
+	.error {
+		background: $brand-danger;
+		padding: .2em;
+		color: $white;
+		border-radius: .1rem;
+		transition: all .3s ease;
+
+		&.form-check-label {
+			padding: .5em 1.75rem;
+			a {
+				color: $white;
+				&:hover {
+					color: $gray-lighter2;
+				}
+			}
+		}
+	}
+
+/*	.shipping-addresses-select .item-inner {
+		border: 1px solid $gray-light;
+	}*/
+    .cmp-address-list .add-item {
+        position: absolute;
+        right: 2%;
+        font-size: 12px;
+        top: 50%;
+        -webkit-transform: translate(0%,-50%);
+        transform: translate(0%,-50%);
+    }
+
+}
+@include media-breakpoint-up(md) {
+  #registry-form-container {
+    background-color: $gray-lighter;
+    box-shadow: none;
+    min-height: 20px;
+    padding: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    border-radius: 0;
+  }
+}
+.myaccount {
+	.history {
+		padding: 15px;
+	}
+}
+.cmp-checkout-sidebar{
+	.cmp.cmp-totals {
+		border: 0;
+		background-color: $gray-lighter;
+		box-shadow: none;
+		min-height: 20px;
+		padding: 19px;
+		margin-bottom: 20px;
+		border-radius: 0;
+	}
+}
+.gesamtsumme{
+  .cmp.cmp-totals{
+    border: 0;
+    background-color: $gray-lighter;
+    box-shadow: none;
+    min-height: 20px;
+    padding: 19px;
+    margin-bottom: 20px;
+    border-radius: 0;
+  }
+}
+.myaccount{
+  .card{
+    font-size: 12px;
+    @include media-breakpoint-up(md) {
+      margin-right: 30px;
+    }
+    .card-header{
+      h5 {
+        margin: 0;
+      }
+    }
+  }
+}
+.page-content.basket, .page-content.checkout, .page-content.myaccount{
+	color: $text-color;
+}
+.login{
+	.well{
+		.btn-primary{
+			width: 100%;
+		}
+	}
+}
+.cmp-checkout-sidebar{
+  .cmp-basket-preview-item{
+    margin-bottom: -1px;
+    border: 1px solid #ececea;
+    padding: 20px;
+    .basket-item-quantity{
+      padding-top: 15px;
+    }
+    &:first-child{
+      padding: 20px;
+    }
+    &:last-child{
+      padding: 20px;
+    }
+  }
+}

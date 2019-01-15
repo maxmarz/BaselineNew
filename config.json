@@ -1,0 +1,542 @@
+{
+  "formatVersion": 1,
+  "menu": {
+    "Config.AllgemeinTab": {
+      "label": "Config.AllgemeinTab",
+      "formFields": {
+        "default.findologicIsActive": {
+          "type": "checkBox",
+          "required": false,
+          "label": "Config.defaultFindologicIsActiveLabel",
+          "options": {
+            "defaultValue": "false"
+          }
+        },
+        "default.findologicKey": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.defaultFindologicKeyLabel",
+          "options": {
+            "defaultValue": ""
+          }
+        },
+        "default.topsellerTagId": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.TopsellerTagId",
+          "options": {
+            "defaultValue": ""
+          }
+        },
+        "default.latestItemsTagId": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.LatestItemsTagId",
+          "options": {
+            "defaultValue": ""
+          }
+        },
+        "default.contentPagesInMenu": {
+          "type": "checkBox",
+          "required": false,
+          "label": "Content Seiten im Menü anzeigen",
+          "options": {
+            "defaultValue": "false"
+          }
+        }
+      }
+    },
+    "Config.StartseiteTab": {
+      "label": "Config.StartseiteTab",
+      "formFields": {
+        "default.slider": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.defaultSliderLabel",
+          "options": {
+            "defaultValue": ""
+          }
+        },
+        "default.highlight1": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.defaultHighlight1Label",
+          "options": {
+            "defaultValue": ""
+          }
+        },
+        "default.highlight1-url": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.defaultHighlight1UrlLabel",
+          "options": {
+            "defaultValue": ""
+          }
+        },
+        "default.highlight2": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.defaultHighlight2Label",
+          "options": {
+            "defaultValue": ""
+          }
+        },
+        "default.highlight2-url": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.defaultHighlight2UrlLabel",
+          "options": {
+            "defaultValue": ""
+          }
+        },
+        "default.highlight3": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.defaultHighlight3Label",
+          "options": {
+            "defaultValue": ""
+          }
+        },
+        "default.highlight3-url": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.defaultHighlight3UrlLabel",
+          "options": {
+            "defaultValue": ""
+          }
+        },
+        "default.highlight4": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.defaultHighlight4Label",
+          "options": {
+            "defaultValue": ""
+          }
+        },
+        "default.highlight4-url": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.defaultHighlight4UrlLabel",
+          "options": {
+            "defaultValue": ""
+          }
+        },
+        "default.showTopseller": {
+          "type": "checkBox",
+          "required": false,
+          "label": "Config.defaultShowTopsellerLabel",
+          "options": {
+            "defaultValue": "false"
+          }
+        },
+        "default.topsellerHeadline": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.defaultTopsellerHeadlineLabel",
+          "options": {
+            "defaultValue": "Topseller"
+          }
+        },
+        "default.topsellerHeadlineEN": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.defaultTopsellerHeadlineLabelEN",
+          "options": {
+            "defaultValue": "Topseller"
+          }
+        },
+        "default.highlight5": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.defaultHighlight5Label",
+          "options": {
+            "defaultValue": ""
+          }
+        },
+        "default.highlight5-url": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.defaultHighlight5UrlLabel",
+          "options": {
+            "defaultValue": ""
+          }
+        },
+        "default.highlight6": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.defaultHighlight6Label",
+          "options": {
+            "defaultValue": ""
+          }
+        },
+        "default.highlight6-url": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.defaultHighlight6UrlLabel",
+          "options": {
+            "defaultValue": ""
+          }
+        },
+        "default.showLatestitem": {
+          "type": "checkBox",
+          "required": false,
+          "label": "Config.defaultShowLatestitemLabel",
+          "options": {
+            "defaultValue": "false"
+          }
+        },
+        "default.latestitemHeadline": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.defaultLatestitemHeadlineLabel",
+          "options": {
+            "defaultValue": "Neuheiten"
+          }
+        },
+        "default.latestitemHeadlineEN": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.defaultLatestitemHeadlineLabelEN",
+          "options": {
+            "defaultValue": "Neuheiten"
+          }
+        }
+      }
+    },
+    "Config.HeaderTab": {
+      "label": "Config.HeaderTab",
+      "formFields": {
+        "header.company_logo": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.headerCompanyLogoLabel",
+          "options": {
+            "defaultValue": ""
+          }
+        },
+        "header.number_of_highlights": {
+          "type": "selectBox",
+          "required": false,
+          "label": "Config.headerNumberOfHighlightsLabel",
+          "options": {
+            "defaultValue": "3",
+            "selectBoxValues": [
+              {
+                "value": "0",
+                "caption": "Config.headerNumberOfHighlightsPossibleValue-0"
+              },
+              {
+                "value": "1",
+                "caption": "Config.headerNumberOfHighlightsPossibleValue-1"
+              },
+              {
+                "value": "2",
+                "caption": "Config.headerNumberOfHighlightsPossibleValue-2"
+              },
+              {
+                "value": "3",
+                "caption": "Config.headerNumberOfHighlightsPossibleValue-3"
+              }
+            ]
+          }
+        },
+        "header.shop_highlight_1": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.headerShopHighlight1Label",
+          "options": {
+            "defaultValue": "Kostenloser Versand"
+          }
+        },
+        "header.shop_highlight_2": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.headerShopHighlight2Label",
+          "options": {
+            "defaultValue": "Große Markenvielfalt"
+          }
+        },
+        "header.shop_highlight_3": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.headerShopHighlight3Label",
+          "options": {
+            "defaultValue": "Alles auf Lager"
+          }
+        },
+        "header.shop_highlight_1EN": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.headerShopHighlight1LabelEN",
+          "options": {
+            "defaultValue": "Kostenloser Versand"
+          }
+        },
+        "header.shop_highlight_2EN": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.headerShopHighlight2LabelEN",
+          "options": {
+            "defaultValue": "Große Markenvielfalt"
+          }
+        },
+        "header.shop_highlight_3EN": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.headerShopHighlight3LabelEN",
+          "options": {
+            "defaultValue": "Alles auf Lager"
+          }
+        },
+        "header.megamenu": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.headerMegamenuLabel",
+          "options": {
+            "defaultValue": ""
+          }
+        },
+        "header.show_navbars": {
+          "type": "selectBox",
+          "required": false,
+          "label": "Config.headerShowNavbarsLabel",
+          "options": {
+            "defaultValue": "both",
+            "selectBoxValues": [
+              {
+                "value": "side",
+                "caption": "Config.headerShowNavbarsPossibleValue-side"
+              },
+              {
+                "value": "both",
+                "caption": "Config.headerShowNavbarsPossibleValue-both"
+              },
+              {
+                "value": "none",
+                "caption": "Config.headerShowNavbarsPossibleValue-none"
+              }
+            ]
+          }
+        },
+        "header.nav_max_level": {
+          "type": "selectBox",
+          "required": false,
+          "label": "Config.headerNavMaxLevelLabel",
+          "options": {
+            "defaultValue": "2",
+            "selectBoxValues": [
+              {
+                "value": "1",
+                "caption": "Config.headerNavMaxLevelPossibleValue-1"
+              },
+              {
+                "value": "2",
+                "caption": "Config.headerNavMaxLevelPossibleValue-2"
+              },
+              {
+                "value": "3",
+                "caption": "Config.headerNavMaxLevelPossibleValue-3"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "Config.ProduktTab": {
+      "label": "Config.ProduktTab",
+      "formFields": {
+        "single.topseller": {
+          "type": "checkBox",
+          "required": false,
+          "label": "Config.singleTopsellerLabel",
+          "options": {
+            "defaultValue": "true"
+          }
+        },
+        "single.cross1": {
+          "type": "checkBox",
+          "required": false,
+          "label": "Config.singleCross1Label",
+          "options": {
+            "defaultValue": "true"
+          }
+        },
+        "single.similarTitle": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.singleSimilarTitleLabel",
+          "options": {
+            "defaultValue": "Ähnliche Artikel"
+          }
+        },
+        "single.cross2": {
+          "type": "checkBox",
+          "required": false,
+          "label": "Config.singleCross2Label",
+          "options": {
+            "defaultValue": "false"
+          }
+        },
+        "single.accessoryTitle": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.singleAccessoryTitleLabel",
+          "options": {
+            "defaultValue": "Zubehör"
+          }
+        },
+        "single.cross3": {
+          "type": "checkBox",
+          "required": false,
+          "label": "Config.singleCross3Label",
+          "options": {
+            "defaultValue": "false"
+          }
+        },
+        "single.replacementPartTitle": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.singleReplacementPartTitleLabel",
+          "options": {
+            "defaultValue": "Ersatzteile"
+          }
+        }
+      }
+    },
+    "Config.FooterTab": {
+      "label": "Config.FooterTab",
+      "formFields": {
+        "footer.payment_title": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.footerPaymentTitleLabel",
+          "options": {
+            "defaultValue": "Zahlung und Versand"
+          }
+        },
+        "footer.payment_title_en": {
+          "type": "inputText",
+          "required": false,
+          "label": "Bereich: Zahlung und Versand - Überschrift EN",
+          "options": {
+            "defaultValue": "Payment and Shipping"
+          }
+        },
+        "footer.newsletterFolder": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.newsletterFolder"
+        },
+        "footer.newsletter": {
+          "type": "checkBox",
+          "required": false,
+          "label": "Config.footerNewsletterLabel",
+          "options": {
+            "defaultValue": "true"
+          }
+        },
+        "footer.col_1_categories": {
+          "type": "inputText",
+          "required": false,
+          "label": "Footer Spalte #1",
+          "options": {
+            "defaultValue": ""
+          }
+        },
+        "footer.col_1_title": {
+          "type": "inputText",
+          "required": false,
+          "label": "Footer Spalte Titel #1",
+          "options": {
+            "defaultValue": ""
+          }
+        },
+        "footer.col_1_title_en": {
+          "type": "inputText",
+          "required": false,
+          "label": "Footer Spalte Titel EN #1",
+          "options": {
+            "defaultValue": ""
+          }
+        },
+        "footer.col_2_categories": {
+          "type": "inputText",
+          "required": false,
+          "label": "Footer Spalte #2",
+          "options": {
+            "defaultValue": ""
+          }
+        },
+        "footer.col_2_title": {
+          "type": "inputText",
+          "required": false,
+          "label": "Footer Spalte Titel #2",
+          "options": {
+            "defaultValue": ""
+          }
+        },
+        "footer.col_2_title_en": {
+          "type": "inputText",
+          "required": false,
+          "label": "Footer Spalte Titel EN #2",
+          "options": {
+            "defaultValue": ""
+          }
+        },
+        "footer.col_3_categories": {
+          "type": "inputText",
+          "required": false,
+          "label": "Footer Spalte #3",
+          "options": {
+            "defaultValue": ""
+          }
+        },
+        "footer.col_3_title": {
+          "type": "inputText",
+          "required": false,
+          "label": "Footer Spalte Titel #3",
+          "options": {
+            "defaultValue": ""
+          }
+        },
+        "footer.col_3_title_en": {
+          "type": "inputText",
+          "required": false,
+          "label": "Footer Spalte Titel EN #3",
+          "options": {
+            "defaultValue": ""
+          }
+        }
+      }
+    },
+    "Config.ContentSeitenTab": {
+      "label": "Config.ContentSeitenTab",
+      "formFields": {
+        "pages.payment": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.pagesPaymentLabel",
+          "options": {
+            "defaultValue": ""
+          }
+        },
+        "pages.shipping": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.pagesShippingLabel",
+          "options": {
+            "defaultValue": ""
+          }
+        },
+        "pages.contact": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.pagesContactLabel",
+          "options": {
+            "defaultValue": ""
+          }
+        }
+      }
+    }
+  }
+}

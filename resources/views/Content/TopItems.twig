@@ -1,0 +1,48 @@
+
+<div class="row top-seller mt-xs-40" data-plentyflow-section="Top-Seller">
+    <div class="col-xs-12">
+        <div class="text-xs-center" data-plentyflow-modul="Titel">
+            {% if lang == en %}
+                <h2 data-plentyflow-element="title">{{ config('CeresBaseline.default.topsellerHeadline') }}</h2>
+            {% else %}
+                <h2 data-plentyflow-element="title">{{ config('CeresBaseline.default.topsellerHeadlineEN') }}</h2>
+            {% endif %}
+        </div>
+
+        {% set topItems = baselineservices.storespecials.getStoreSpecial(3) %}
+
+        {%  if topItems.currentItems|length > 0 %}
+        <div class="row mt-xs-15">
+
+            <div class="swiper-container product-slider">
+                <div class="swiper-wrapper">
+                    {% set arrID = [] %} {# HOTFIX #}
+                    {% for item in topItems.currentItems %}
+                        {% if item is not null %}
+
+                            {% if item.itemDescription.itemId not in arrID %} {# HOTFIX #}
+                                {% set arrID = arrID|merge([item.itemDescription.itemId]) %} {# HOTFIX #}
+                                <div class="swiper-slide">
+                                    {% include "CeresBaseline::Category.Item.Partials.CategoryListItem" with { 'item': services.item.getItem(item.itemDescription.itemId).documents[0] } %}
+                                </div>
+
+                            {% endif %}
+
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="swiper-button-prev swiper-button-black">&nbsp;</div>
+                <div class="swiper-button-next swiper-button-black">&nbsp;</div>
+            </div>
+
+        </div>
+        {% endif %}
+
+    </div>
+</div>
+
+
+
+
+
+

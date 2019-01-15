@@ -1,0 +1,106 @@
+{% import "Ceres::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
+
+{% set displayedCategories = [] %}
+{% set numberOfFeatures    = config('Ceres.footer.number_of_features') %}
+{% set newsletter          = config('CeresBaseline.footer.newsletter') %}
+{% set newsletterFolder          = config('CeresBaseline.footer.newsletterFolder') %}
+
+{% if lang == 'en' %}
+    {% set paymentTitle        = config('CeresBaseline.footer.payment_title_en') %}
+{% else %}
+    {% set paymentTitle        = config('CeresBaseline.footer.payment_title') %}
+{% endif %}
+
+<div id="footer" data-plentyflow-section="Footer" data-plentyflow-section-element="space" data-plentyflow-onlyhomepage="true">
+
+    {# TODO: Newsletter einbauen #}
+    {% if newsletter == "true" %}
+    <div class="newsletter-bg text-xs-center" data-plentyflow-modul="Newsletter" data-plentyflow-modul-element="block, space, display">
+        <div class="container-max">
+            <div class="row">
+                <div class="offset-xs-1 col-xs-10 offset-sm-2 col-sm-8 offset-md-3 col-md-6 offset-lg-4 col-lg-4">
+                    <h2 data-plentyflow-element="title" class="newsletter-title mb-xs-15">
+                        {{ trans("CeresBaseline::Template.generalNewsletter") }}</h2>
+                    <p data-plentyflow-element="text">
+                        {{ trans("CeresBaseline::Template.footerNewsletterText")|raw }}
+                    </p>
+                    <newsletter-input :email-folder="{{ newsletterFolder | json_encode }}"></newsletter-input>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    <div class="footer-bg" data-plentyflow-modul="Main-Footer" data-plentyflow-modul-element="block, space">
+        <div class="container-max">
+            <div class="row">
+                <div class="col-md-9 col-sm-12">
+                    <div class="row">
+                        {% for i in 1..3 %}
+                            <div class="col-xs-6 col-sm-4 ">
+                                <nav class="footer-column m-b-2">
+                                    {% if lang == 'en' %}
+                                        {% set colTitle = config('CeresBaseline.footer.col_' ~ i ~ '_title_en') %}
+                                    {% else %}
+                                        {% set colTitle = config('CeresBaseline.footer.col_' ~ i ~ '_title') %}
+                                    {% endif %}
+                                    <div class="h4" data-plentyflow-element="title">{{ colTitle }}</div>
+                                    <ul class="list-unstyled">
+
+                                        {% set footerCategories = config('CeresBaseline.footer.col_' ~ i ~ '_categories') | find("[0-9]+") %}
+                                        {% for catID in footerCategories %}
+
+                                            {% set cat = services.category.get(catID) %}
+
+                                            {% if cat is not null %}
+                                                {% set displayedCategories = displayedCategories | merge([catID]) %}
+                                                <li>
+                                                    <a data-plentyflow-element="text, link, 2" href="{{ services.category.getURL( cat ) }}">
+                                                        {{ cat.details.first.name }}
+                                                    </a>
+                                                </li>
+                                            {% endif %}
+
+                                        {% endfor %}
+
+                                    </ul>
+                                </nav>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="h4" data-plentyflow-element="title">{{ paymentTitle }}</div>
+                    {% set paymentMethodContent = LayoutContainer.show("Ceres::Homepage.PaymentMethods") %}
+                    {% if paymentMethodContent|trim is not empty %}
+                        <div class="services-payment m-b-1">
+                            {{ paymentMethodContent }}
+                        </div>
+                    {% endif %}
+                    {% set shippingContent = LayoutContainer.show("Ceres::Homepage.Shipping") %}
+                    {% if shippingContent|trim is not empty %}
+                        <div class="services-shipping m-b-1">
+                            {{ shippingContent }}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sub-footer" data-plentyflow-modul="Sub-Footer" data-plentyflow-modul-element="block, space">
+        <div class="container-max">
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 text-xs-center text-sm-left" data-plentyflow-element="text">
+                    {% set shippingID  = config("CeresBaseline.pages.shipping") %}
+                    {% set shippingCat = services.category.get(shippingID) %}
+                    * {{ trans("Ceres::Template.itemInclVAT") }} {{ trans("Ceres::Template.itemExclusive") }}
+                    <a {% if shippingCat is not empty %} data-toggle="modal" href="#shippingscosts"{% endif %} title="{{ trans("Ceres::Template.itemShippingCosts") }}">{{ trans("Ceres::Template.itemShippingCosts") }}</a>
+                </div>
+                <div class="col-xs-12 col-sm-6 text-sm-right text-xs-center mt-xs-20 mt-sm-0">
+                    <span data-plentyflow-element="text">Powered by</span> <a href="http://plentyflow.de/" title="plentyflow" target="_blank"><img src="{{ plugin_path('CeresBaseline') }}/images/icon-footer.png" alt="footer logo"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{ LayoutContainer.show("Ceres::Footer.RowOne") }}
+</div>

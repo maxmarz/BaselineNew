@@ -1,0 +1,96 @@
+{% set companyLogoNav   = config("CeresBaseline.header.company_logo") %}
+{% set lang             = services.sessionStorage.getLang() %}
+{% set megamenu         = config("CeresBaseline.header.megamenu") | find("[0-9]+") %}
+{% set megamenuMaxLevel = config("CeresBaseline.header.nav_max_level") %}
+
+
+<nav class="navbar" data-plentyflow-section="Navigation" data-plentyflow-section-element="block" data-plentyflow-onlyhomepage="true">
+    <div class="container-max">
+
+        <!--       LOGO       -->
+        <!--       START      -->
+        <div class="brand-wrapper text-xs-center" data-plentyflow-modul="Logo">
+            <a class="pull-lg-left" href="{{ homepageURL }}">
+                {% if (companyLogoNav is empty)  %}
+                    <img src="{{ plugin_path('CeresBaseline') }}/images/baseline-logo.png" class="img-fluid"/>
+                {% else %}
+                    <img data-plentyflow-element="image, space" src="{{ companyLogoNav }}" class="img-fluid"/>
+                {% endif %}
+            </a>
+        </div>
+
+        <div class="control-languages--mobile text-lg-right seperation-right">
+            <a data-toggle="collapse" href="#countrySettings" aria-expanded="false"
+               aria-controls="countrySettings"
+               data-parent="#controlsList">
+                <i class="flag-icon flag-icon-{{ lang }}"></i>
+            </a>
+        </div>
+        <!--       LOGO       -->
+        <!--        END       -->
+
+        {# if showHeaderNavBar == "top" or showHeaderNavBar == "both" #}{# or not services.template.isCategory() #}
+            {% include "CeresBaseline::PageDesign.Partials.Header.NavigationList" %}
+        {# endif #}
+
+        <div class="search-desktop hidden-md-down pull-lg-right" data-plentyflow-modul="Search-Icon">
+            <button class="search-trigger btn">
+                <i data-plentyflow-element="text, link" class="fa fa-search sm-up"></i>
+            </button>
+        </div>
+        <!--   DESKTOP MENU   -->
+        <!--        END       -->
+
+
+        <!--   MOBILE MENU    -->
+        <!--       START      -->
+        <div class="row mobile-nav navbar-icons hidden-lg-up {% if services.customer.getContact() != null  %}login-row{% endif %}">
+            <div class="col-xs-3" data-plentyflow-modul="Mobile-Menu-Icon">
+                <a class="menu-toggle" href="#">
+                    <div class="nav-icon" data-plentyflow-element="text">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-xs-3">
+                <div class="control-user mobile">
+
+                    {# TODO: needs to be defined by plenty, start level is MODUL #}
+                    <user-login-handler template="#vue-user-login-handler"
+                                        :user-data="{{ services.customer.getContact() | json_encode() }}"></user-login-handler>
+                </div>
+            </div>
+
+            <div class="col-xs-3" data-plentyflow-modul="Mobile-Search">
+                <a class="" data-toggle="collapse" href="#searchBox"
+                   aria-expanded="{% if services.template.isSearch() %}true{% else %}false{% endif %}"
+                   aria-controls="searchBox"
+                   data-parent="#controlsList"
+                   data-plentyflow-element="text">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    <span class="hidden-md-down">{{ trans("Ceres::Template.generalSearchNoDot") }}</span>
+                </a>
+            </div>
+
+            <div class="col-xs-3" data-plentyflow-modul="Mobile-Basketpreview">
+                <a v-toggle-basket-preview href="#" id="toggleBasketPreview" class="toggle-basket-preview">
+                    {% if config("Ceres.header.basket_values") != "sum" %}
+                        <span class="badge-right" v-basket-item-quantity="this.$store.state.basket.data.itemQuantity">0</span>
+                    {% endif %}
+
+                    <i v-waiting-animation="this.$store.state.basket.isBasketLoading" waiting-class="fa fa-refresh fa-spin" class="fa fa-shopping-cart" aria-hidden="true"></i>
+                    {% if config("Ceres.header.basket_values") != "quantity" %}
+                        <span class="badge" v-basket-item-sum="this.$store.state.basket.data.itemSum">0,00 {{ services.checkout.getCurrencyData()[currencyFormat] }}</span>
+                    {% endif %}
+                </a>
+            </div>
+        </div>
+        <!--   MOBILE MENU    -->
+        <!--        END       -->
+    </div>
+</nav>
+

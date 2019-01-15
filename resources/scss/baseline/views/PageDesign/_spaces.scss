@@ -1,0 +1,61 @@
+$types: 0;
+$type-width: 0px;
+
+@while $types < 105{
+  .mt-xs-#{$types}{
+    margin-top: $type-width + $types;
+  }
+  .mb-xs-#{$types}{
+    margin-bottom: $type-width + $types;
+  }
+  .pt-xs-#{$types}{
+    padding-top: $type-width + $types;
+  }
+  .pb-xs-#{$types}{
+    padding-bottom: $type-width + $types;
+  }
+  $types: $types + 5;
+}
+
+
+@include media-breakpoint-up(sm) {
+  $types: 0;
+  $type-width: 0px;
+
+  @while $types < 105{
+    .mt-sm-#{$types}{
+      margin-top: $type-width + $types;
+    }
+    .mb-sm-#{$types}{
+      margin-bottom: $type-width + $types;
+    }
+    .pt-sm-#{$types}{
+      padding-top: $type-width + $types;
+    }
+    .pb-sm-#{$types}{
+      padding-bottom: $type-width + $types;
+    }
+    $types: $types + 5;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  $types: 0;
+  $type-width: 0px;
+
+  @while $types < 105{
+    .mt-md-#{$types}{
+      margin-top: $type-width + $types;
+    }
+    .mb-md-#{$types}{
+      margin-bottom: $type-width + $types;
+    }
+    .pt-md-#{$types}{
+      padding-top: $type-width + $types;
+    }
+    .pb-md-#{$types}{
+      padding-bottom: $type-width + $types;
+    }
+    $types: $types + 5;
+  }
+}

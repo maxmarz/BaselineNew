@@ -1,0 +1,15 @@
+{% extends getPartial('page-design') %}
+
+{% block PageBody %}
+    {{ component( "Ceres::Customer.Components.Registration") }}
+    <div class="registration container-max">
+        <div class="row m-b-3">
+            <div class="col-lg-10 offset-lg-1 ">
+                <h1 class="h2">{{ trans("Ceres::Template.regRegisterAccount") }}</h1>
+                <hr>
+                <registration template="#vue-registration" backlink="{{ request.get("backlink") }}"></registration>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

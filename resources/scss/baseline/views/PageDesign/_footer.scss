@@ -1,0 +1,116 @@
+input#nl_email {
+  min-height: 42px;
+}
+#footer {
+  @include media-breakpoint-up(md) {
+    margin-top: 50px;
+  }
+  .social-list {
+    @include media-breakpoint-up(sm) {
+      li {
+        display: block;
+      }
+    }
+    li i {
+      font-size: 30px;
+      @include media-breakpoint-up(sm) {
+        font-size: 18px;
+      }
+    }
+  }
+  .payment {
+    @include media-breakpoint-up(sm) {
+      h4 {
+        display: inline-block;
+        margin-right: 20px;
+      }
+    }
+    @include media-breakpoint-up(md) {
+      h4 {
+        display: block;
+        margin-right: 0;
+      }
+    }
+    .list-payment {
+      @include media-breakpoint-up(sm) {
+        display: inline-block;
+        text-align: left;
+      }
+      @include media-breakpoint-up(md) {
+        display: block;
+      }
+      display: block;
+      li {
+        padding-right: 30px;
+        padding-bottom: 15px;
+
+      }
+    }
+  }
+  .services-payment,.services-shipping {
+    display: flex;
+    flex-wrap: wrap;
+    img {
+      max-width: 70px;
+      max-height: 40px;
+    }
+  }
+}
+
+.footer-bg {
+  background-color: $gray-base;
+  color: #fff;
+  padding: 60px 10px;
+  @include media-breakpoint-up(sm) {
+    padding: 60px 0;
+  }
+  a {
+    color: #fff;
+    &:hover {
+      text-decoration: none;
+      color: $brand-primary;
+      i {
+        color: $brand-primary;
+      }
+    }
+  }
+  i {
+    color: $gray-darker;
+    margin-right: 10px;
+    font-size: 20px;
+    vertical-align: middle;
+  }
+  h4 {
+    font-weight: 400;
+    font-size: 18px;
+  }
+  ul {
+    line-height: 24px;
+    margin-top: 25px;
+  }
+}
+
+.sub-footer {
+  background-color: #fff;
+  font-size: 12px;
+  padding: 8px 0;
+}
+
+.newsletter-bg {
+  background-color: $gray-lighter;
+  padding-top: 30px;
+  padding-bottom: 50px;
+  form  {
+    margin-top: 30px;
+  }
+  .form-control {
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .input-unit .input-unit-label, .input-unit label{
+    width:auto;
+  }
+}
+.newsletter-title {
+  color: $brand-primary;
+}

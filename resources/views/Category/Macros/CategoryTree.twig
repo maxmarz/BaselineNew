@@ -1,0 +1,238 @@
+
+{% set megamenu         = config("CeresBaseline.header.megamenu") | find("[0-9]+") %}
+{% set testval         = config("CeresBaseline.header.shop_highlight_3EN") %}
+{% set megamenuMaxLevel = config("CeresBaseline.header.nav_max_level") %}
+
+
+{% macro get_children(category, currentScopeUrl, level, megaMenuLevels, maxItems, megamenu) %}
+    {% set megaMenuLevels = megaMenuLevels | default(3) %}
+    {% set maxItems = maxItems | default({"1": 30, "2": 3, "3": 2}) %}
+    {% import _self as childlist %}
+    {% set counter = 0 %}
+    <!-- {{ megaMenuLevels | json_encode }} -->
+    <!-- {{ maxItems | json_encode }} -->
+    {% if level < megaMenuLevels %}
+        {% for child in category.children if counter < maxItems[level] %}
+            {% if (child.details | length > 0) %}
+                <li class="nav-item">
+                    {% set newScope = currentScopeUrl ~ "/" ~ child.details[0].nameUrl %}
+                    <a class="nav-link" href="{{ newScope }}{{ urls.trailingSlashSuffix }}">{{ child.details[0].name }}</a>
+                    {% if child.children %}
+                        {% if level == 1 %}<ul>{% endif %}
+                        {{ childlist.get_children(child, newScope, level + 1, megaMenuLevels, maxItems, megamenu) }}
+                        {% if level == 1 %}</ul>{% endif %}
+                    {% endif %}
+                </li>
+                {% set counter = counter + 1 %}
+                {% if counter == maxItems[level]%}
+                    <li class="nav-item level{{ level }} bt-more"><a href="{{ currentScopeUrl }}" class="nav-link">{{ trans("Ceres::Template.itemShowMore") }}...</a></li>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endmacro %}
+
+
+{% macro get_nav_bar(categories, currentScopeUrl, megaMenuLevels, maxItemsPerStage, megamenu, currentCatId) %}
+    {% import _self as navbar %}
+    {% set counter = 0 %}
+    {% set megaMenuLevels = megaMenuLevels | default(3) %}
+
+    {% for category in categories %}
+
+        {% if category.details | length > 0 %}
+
+            {% if urls.includeLanguage %}
+                {% set currentScopeUrl = "/" ~ category.details[0].lang ~  "/" ~ category.details[0].nameUrl %}
+            {% else %}
+                {% set currentScopeUrl = "/" ~ category.details[0].nameUrl %}
+            {% endif %}
+            {% set translatedChildren = 0 %}
+            {% for children in category.children if children.details[0] %}
+                {% set translatedChildren = translatedChildren + 1 %}
+            {% endfor %}
+
+            {% if category.children and translatedChildren > 0 %}
+
+                <li class="nav-item dropdown cat-{{ category.id }} {% if category.id in megamenu %}yamm-fw{% endif %}">
+                    <a class="dropdown-toggle nav-link" data-target="#" data-target="#" aria-haspopup="true" aria-expanded="false" href="{{ currentScopeUrl }}{{ urls.trailingSlashSuffix }}">{{ category.details[0].name }}</a>
+
+                    <ul id="cat-{{ counter }}" class="dropdown-menu">
+
+
+                        {% if category.id in megamenu  %}
+                        <div class="yamm-content container">
+                            <div class="text-lg-center"><a href="{{ currentScopeUrl }}{{ urls.trailingSlashSuffix }}" class="h2">{{ category.details[0].name }}</a></div>
+                            <div class="row">
+                                <div class="col-md-{% if category.details[0].image2Path != "" %}9{% else %}12{% endif %}">
+                                    <ul class="row list-unstyled mt-sm-10">
+                        {% endif %}
+
+                        {% set counter = counter + 1 %}
+                        {% if megaMenuLevels == 1 %}
+                            {% for child in category.children %}
+                                {% if child.details | length > 0 %}
+
+                                    <li  class="{% if child.children is not empty %}dropdown{% endif %} {% if category.id in megamenu %} col-md-4  {% else %} dropdown {%  endif  %}">
+
+                                        <a class="dropdown-item special-case {% if category.id in megamenu  %}h4{% else %} no-mega{% endif %} block"
+                                           href="{{ currentScopeUrl }}/{{ child.details[0].nameUrl }}{{ urls.trailingSlashSuffix }}"
+                                           data-plentyflow-element="title, link">
+                                            {{ child.details[0].name }}
+                                        </a>
+
+                                        {% if child.children is not empty %}
+                                            <ul class="dropdown-menu sub-menu list-unstyled">
+                                                <li>
+                                                    {% for subsubcat in child.children %}
+                                                        <a data-plentyflow-element="text, link, 2"
+                                                           class="dropdown-item special-case block"
+                                                           href="{{ currentScopeUrl }}/{{ child.details[0].nameUrl }}/{{ subsubcat.details[0].nameUrl }}{{ urls.trailingSlashSuffix }}">
+                                                            {{ subsubcat.details[0].name }}
+                                                        </a>
+                                                    {% endfor %}
+                                                </li>
+                                            </ul>
+                                        {% endif %}
+                                    </li>
+
+                                {% endif %}
+                            {% endfor %}
+                        {% else %}
+                            {{ navbar.get_children(category, currentScopeUrl, 1, megaMenuLevels, maxItemsPerStage, megamenu) }}
+                        {% endif %}
+
+
+                        {% if category.id in megamenu  %}
+                                    </ul>
+                                </div>
+                                {% if category.details[0].image2Path != "" %}
+                                    <div class="col-md-3">
+                                        <img class="img-fluid cat-img-nav" src="/documents/{{ category.details[0].image2Path }}" alt="{{ category.details[0].name }}" />
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% endif %}
+
+                    </ul>
+                </li>
+
+            {% else %}
+                <li class="nav-item {% if category.id==currentCatId %} nav-item--active {% endif %}">
+                    <a class="nav-link" href="{{ currentScopeUrl }}{{ urls.trailingSlashSuffix }}">{{ category.details[0].name }}</a>
+                </li>
+
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+
+{% endmacro %}
+
+{% macro get_sidemenu(breadcrumbs, categories, currentScopeUrl) %}
+
+    {% import _self as sidemenu %}
+    {% set urlNow = currentScopeUrl %}
+
+    {% for category in categories %}
+
+        {% set urlNow = currentScopeUrl ~ "/" ~ category.details[0].nameUrl %}
+
+        {% if category.details[0] %}
+            <ul>
+                <li class="nav-item{% for breadcrumb in breadcrumbs %}{% if category.id == breadcrumb.id %} active{% endif %}{% endfor %}" v-update-sidenav-selection="$store.getters.breadcrumbs" data-category-id="{{ category.id }}">
+                    <a href="{{ urlNow }}{{ urls.trailingSlashSuffix }}" class="nav-link" v-render-category="{ id: {{ category.id }}, type: '{{ category.type }}', alwaysOpen: true, scrollToTop: 600 }">{{ category.details[0].name }}</a>
+                    {% if category.children is not empty %}
+                        {{ sidemenu.get_sidemenu(breadcrumbs, category.children, urlNow) }}
+                    {% endif %}
+                </li>
+            </ul>
+        {% endif %}
+
+    {% endfor %}
+
+{% endmacro %}
+
+{#
+        <!--   DESKTOP MENU   -->
+        <!--       START      -->
+        <ul class="nav navbar-nav main-nav pull-lg-left hidden-md-down"
+            data-dropdown-in="fadeIn"
+            data-dropdown-out="fadeOut"
+            data-plentyflow-modul="Menu">
+
+
+            {% for category in services.category.getNavigationTree("all", lang, megamenuMaxLevel) %}
+
+
+                {% if category.children is empty %}
+                    <li class="nav-item">
+                        <a data-plentyflow-element="text, link"
+                           class="nav-link"
+                           href="{{ services.category.getURL( category, lang ) }}">
+                            {{ category.details.first.name }}
+                        </a>
+                    </li>
+                {% else %}
+                    <li class="nav-item dropdown {% if category.details.first.categoryId in megamenu  %}yamm-fw{% endif %}">
+
+                        <a class="dropdown-toggle nav-link"
+                           id="{{ category.details.first.name }}_Menu"
+                           data-target="#"
+                           href="{{ services.category.getURL( category, lang ) }}"
+                           aria-haspopup="true"
+                           aria-expanded="false"
+                           data-plentyflow-element="text,link">
+                            {{ category.details.first.name }}
+                        </a>
+
+                        <ul data-plentyflow-element="block" class="dropdown-menu" aria-labelledby="{{ category.details.first.name }}_Menu">
+
+                            {% if category.details.first.categoryId in megamenu  %}
+                            <div class="yamm-content container">
+                                <div class="text-lg-center"><a href="{{ services.category.getURL( category, lang ) }}" class="h2">{{ category.details.first.name }}</a></div>
+                                <div class="row">
+                                    <div class="col-md-{% if category.details.first.image2Path != "" %}9{% else %}12{% endif %}">
+                                        <ul class="row list-unstyled mt-sm-10">
+                                            {% endif %}
+                                            {% for subcat in category.children %}
+                                                <li  class="{% if subcat.children is not empty %}dropdown{% endif %} {% if category.details.first.categoryId in megamenu %} col-md-4  {% else %} dropdown {%  endif  %}">
+
+                                                    <a class="dropdown-item special-case {% if category.details.first.categoryId in megamenu  %}h4{% else %} no-mega{% endif %} block"
+                                                       href="{{ services.category.getURL( subcat, lang ) }}"
+                                                       data-plentyflow-element="title, link">
+                                                        {{ subcat.details.first.name }}
+                                                    </a>
+
+                                                    {% if subcat.children is not empty %}
+                                                        <ul class="dropdown-menu sub-menu list-unstyled">
+                                                            <li>
+                                                                {% for subsubcat in subcat.children %}
+                                                                    <a data-plentyflow-element="text, link, 2"
+                                                                       class="dropdown-item special-case block"
+                                                                       href="{{ services.category.getURL( subsubcat, lang ) }}">
+                                                                        {{ subsubcat.details.first.name }}
+                                                                    </a>
+                                                                {% endfor %}
+                                                            </li>
+                                                        </ul>
+                                                    {% endif %}
+                                                </li>
+                                            {% endfor %}
+                                            {% if category.details.first.categoryId in megamenu  %}
+                                        </ul>
+                                    </div>
+                                    {% if category.details.first.image2Path != "" %}
+                                        <div class="col-md-3">
+                                            <img class="img-fluid cat-img-nav" src="/documents/{{ category.details.first.image2Path }}" alt="{{ category.details.first.name }}" />
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            {% endif %}
+                        </ul>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+#}

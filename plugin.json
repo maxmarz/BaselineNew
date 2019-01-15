@@ -1,0 +1,33 @@
+{
+    "version"           : "2.5.0",
+    "name"              : "CeresBaseline",
+    "description"       : "Das ist ein Baseline Theme für Ceres",
+    "author"            : "plentyflow",
+    "license"           : "MIT",
+    "isClosedSource"    : false,
+    "pluginIcon"        : "icon_plugin_xs.png",
+    "price"             : 0.00,
+    "shortDescription"  : {"de": "Das ist ein Baseline Theme für Ceres","en":"This is a Baseline Theme for Ceres"},
+    "authorIcon"        : "icon_author_xs.png",
+    "categories"        : ["3518"],
+    "email"             : "info@plentyflow.de",
+    "phone"             : "",
+    "keywords"          : ["plentymarkets", "plugins", "layout", "theme", "ceres", "CeresBaseline", "ONEDOT", "plentyflow"],
+    "type"              : "theme",
+    "require"           : {"Ceres" : ">=2.17.1", "IO" : ">=2.17.1"},
+    "namespace"         : "CeresBaseline",
+    "serviceProvider"   : "CeresBaseline\\Providers\\CeresBaselineServiceProvider",
+    "dataProviders"     : [
+
+            {
+                "key":"CeresBaseline\\Containers\\CeresBaselineStyle",
+                "name":"Stylesheet CeresBaseline",
+                "description":""
+            },
+            {
+              "key":"CeresBaseline\\Containers\\CeresBaselineScript",
+              "name":"Script CeresBaseline",
+              "description":""
+            }
+    ]
+}

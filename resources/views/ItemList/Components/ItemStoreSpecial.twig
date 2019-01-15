@@ -1,0 +1,11 @@
+<script type="x/template" id="vue-item-store-special">
+
+    <span class="tag" v-bind:class="tagClass" >
+        <span v-if="storeSpecial.id === 1">SALE</span>
+        <span v-if="storeSpecial.id === 2">NEW</span>
+        <span v-if="storeSpecial.id === 3">TOP</span>
+        {#${ label }#}
+
+    </span>
+
+</script>

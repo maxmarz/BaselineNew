@@ -1,0 +1,39 @@
+//navigation scss
+
+@include media-breakpoint-up(md){
+	.wrapper-main {
+		& > nav.container-max {
+			padding-left:0;
+			padding-right:0;
+			position: absolute;
+		    z-index: 1000;
+		    display: block;
+		    width: 100%;
+		    max-width: 100%;
+		    background:$breadcrumb-bg;
+		    top:96px;
+		}
+		.breadcrumb{
+			margin-bottom: 0;
+			max-width: 1200px;
+		    margin: 0 auto;
+		    background: transparent;
+		    padding: .5rem 15px;
+		}
+	}
+	
+}
+@include media-breakpoint-up(lg){
+	.wrapper-main {
+		& > nav.container-max {
+		    top:88px;
+		}
+		.breadcrumb{
+		    padding: .5rem 0;
+		}
+	}
+}
+
+.breadcrumb-item+.breadcrumb-item::before {
+	/*content: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiP…w4OS40OTk5OTQ2IFoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0yOTcgLTg1KSIvPgo8L3N2Zz4K');*/
+}

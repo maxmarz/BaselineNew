@@ -1,0 +1,143 @@
+{% extends getPartial('page-design') %}
+{% import "CeresBaseline::Category.Macros.CategoryTree" as Tree %}
+{% import "Ceres::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
+
+{# UPDATE: MOVED TO BASELINE #}
+{% set showHeaderNavBar        = config("CeresBaseline.header.show_navbars") %}
+
+{% block PageBody %}
+
+    {{ component( "Ceres::ItemList.Components.Filter.ItemFilterList") }}
+    {{ component( "Ceres::ItemList.Components.Filter.ItemFilterTagList") }}
+    {{ component( "CeresBaseline::ItemList.Components.ItemList") }}
+    {{ component( "Ceres::ItemList.Components.CategoryImageCarousel") }}
+    {{ component( "Ceres::ItemList.Components.ItemListSorting") }}
+    {{ component( "Ceres::ItemList.Components.ItemsPerPage") }}
+    {{ component( "Ceres::ItemList.Components.Pagination") }}
+
+    <div id="category" class="categoriegrid page-content container-max" data-plentyflow-pagename="Kategorieseite">
+        {% if (category.details[0].imagePath != "") %}
+            <div class="category-banner" data-plentyflow-section="Kategorie-Banner">
+                <div class="pos-center" data-plentyflow-modul="Banner" data-plentyflow-modul-element="block, display">
+                    <h1 data-plentyflow-element="title" class="category-title">{{ category.details[0].name }}</h1>
+                    <div class="visible-md visible-lg">
+                        {% if ceresConfig.item.showCategoryDescription %}
+                            <p data-plentyflow-element="text">{{ category.details[0].description|striptags|slice(0, 150) | raw }}</p>
+                            <a data-plentyflow-element="text, link" class="smooth-scroll" href="#category-desc">mehr lesen</a>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="category-img mt-xs-15" style="background-image: url('/documents/{{ category.details[0].imagePath }}')"></div>
+            </div>
+        {% else %}
+            <div class="category-banner without-image mt-xs-15" data-plentyflow-section="Kategorie-Banner">
+                <div class="pos-center" data-plentyflow-modul="Banner" data-plentyflow-modul-element="block, display">
+                    <h1 class="category-title">{{ category.details[0].name }}</h1>
+                    <div class="visible-md visible-lg">
+                        {% if ceresConfig.item.showCategoryDescription and category.details[0].description != "" %}
+                            <p data-plentyflow-element="text">{{ category.details[0].description|striptags|slice(0, 150) | raw }}</p>
+                            <a data-plentyflow-element="text, link" class="smooth-scroll" href="#category-desc">mehr lesen</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+        <!-- breadcrumb -->
+        {% include "CeresBaseline::PageDesign.Partials.Header.Breadcrumb" %}
+        <div class="row container-max">
+
+            {% if ceresConfig.header.showNavBars == "side" or ceresConfig.header.showNavBars == "both" %}
+                <div class="col-xs-3 hidden-md-down" data-plentyflow-section="Sidebar">
+                    <div class="sidebar-categories">
+                        <div data-plentyflow-modul="Titel">
+                            <p class="h4" data-plentyflow-element="title">{{ trans("Ceres::Template.itemCategories") }}</p>
+                        </div>
+                        <div data-plentyflow-modul="Kategorien">
+                            {{ include('Ceres::PageDesign.Partials.Header.SideNavigation.twig') }}
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+
+            <div class="col-lg-{% if ceresConfig.header.showNavBars == "side" or ceresConfig.header.showNavBars == "both" %}9{% else %}12{% endif %} col-md-12 ">
+
+                <div class="list-controls m-b-3" data-plentyflow-section="Sortierung" data-plentyflow-section-element="display, space">
+                    <div class="list-controls-inner">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="list-wrapper pull-right">
+                                    <item-list-sorting template="#vue-item-list-sorting" :sorting-list="{{ searchOptions.sorting | json_encode }}" :default-sorting="{{ searchOptions.defaultSorting | json_encode }}"></item-list-sorting>
+
+
+                                    <items-per-page
+                                            template="#vue-items-per-page"
+                                            :pagination-values="{{ searchOptions.itemsPerPage | json_encode }}"></items-per-page>
+                                    <item-filter-list :facet-data="{{ facets | json_encode }}"></item-filter-list>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TAGS -->
+                    <item-filter-tag-list></item-filter-tag-list>
+                </div>
+
+                <div id="twig-rendered-item-list"
+                     class="item-list-frame{% if loadingAnimationType == "blur" %} blur-effect{% endif %}"
+                     data-plentyflow-section="Artikel">
+
+                    {% if loadingAnimationType != "blur" %}
+                        {% include "Ceres::ItemList.Partials.LoadingAnimation" %}
+                    {% endif %}
+
+                    <ul class="product-list row grid" v-is-loading-watcher="$store.state.itemList.isLoading">
+                        {% for item in itemList %}
+                            <li class="col-xs-12 col-sm-6 col-md-4 col-lg-{% if showHeaderNavBar == "side" or showHeaderNavBar == "both" %}4{% else %}3{% endif %}">
+                                {% include "CeresBaseline::Category.Item.Partials.CategoryListItem" with { 'item': item } %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <div id="vue-rendered-item-list" style="display:none">
+                    <item-list template="#vue-item-list" :total-items-data="{{ itemCountTotal }}" :category-id="{{ category.id }}"></item-list>
+                </div>
+            </div>
+        </div>
+
+        <pagination template="#vue-pagination"></pagination>
+
+        <noscript>
+            {% include "Ceres::Category.Item.Partials.Pagination" %}
+        </noscript>
+
+        {% if category.details[0].description != ""  %}
+        <div id="category-desc" class="seo text-xs-center" data-plentyflow-section="SEO" data-plentyflow-section-element="display, space">
+            <div class="category-description" data-plentyflow-modul="SEO-Text">
+                <p data-plentyflow-element="text">{{ category.details[0].description|raw  }}</p>
+            </div>
+        </div>
+        {% endif %}
+
+    </div>
+{% endblock %}
+
+{% block PartialHead %}
+    <script type="application/ld+json">{"@context": "http://schema.org","@type": "WebSite","url": "{{ webstoreConfig.domainSsl }}","potentialAction":{"@type": "SearchAction","target": "{{ domainSsl }}/search?query={search_term}","query-input": "required name=search_term"}}</script>
+
+    {% if currentPage-1 > 0 %}
+        <link rel=“prev“ href=“{{ webstoreConfig.domainSsl }}?{{ query | merge({'page' : currentPage-1 }) | url_encode }}“ />
+    {% endif %}
+
+    {% if currentPage+1 <= pageMax %}
+        <link rel=“next“ href=“{{ webstoreConfig.domainSsl }}?{{ query | merge({'page' : currentPage+1 }) | url_encode }}“ />
+    {% endif %}
+
+    <title>{{ category.details[0].name }} | {{ ceresConfig.header.companyName }}</title>
+
+    <meta name="description" content="{{ category.details[0].metaDescription }}">
+    <meta name="keywords" content="{{ category.details[0].metaKeywords }}">
+
+    <meta name="robots" content="{{ metaRobots }}">
+{% endblock %}

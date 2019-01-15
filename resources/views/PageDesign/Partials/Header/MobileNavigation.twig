@@ -1,0 +1,61 @@
+{% set companyLogo = config("CeresBaseline.header.company_logo") %}
+
+<div class="mobile-menu-header" data-plentyflow-modul="Logo">
+    <a href="{{ homepageURL }}">
+        {% if (companyLogo is empty)  %}
+            <img src="{{ plugin_path('CeresBaseline') }}/images/baseline-logo.png" class="img-fluid"/>
+        {% else %}
+            <img data-plentyflow-element="image, space" src="{{ companyLogo }}" class="img-fluid"/>
+        {% endif %}
+    </a>
+    <a href="#" class="menu-toggle pull-right"><i class="fa fa-close" aria-hidden="true"></i></a>
+</div>
+<nav class="mobile-menu" data-plentyflow-modul="Menu">
+    <ul class="ul-node">
+
+        {% for category in services.category.getNavigationTree("all", lang, 6) %}
+
+            {% if category.details | length > 0 %}
+
+                {% if urls.includeLanguage %}
+                    {% set currentScopeUrl = "/" ~ category.details[0].lang ~  "/" ~ category.details[0].nameUrl %}
+                {% else %}
+                    {% set currentScopeUrl = "/" ~ category.details[0].nameUrl %}
+                {% endif %}
+
+                {% if category.children is empty %}
+                    <li>
+                        <a class="touch-enabled"
+                           href="{{ currentScopeUrl }}{{ urls.trailingSlashSuffix }}"
+                           data-plentyflow-element="text, link">
+                            {{ category.details[0].name }}
+                        </a>
+                    </li>
+                {% else %}
+                    <li class="li-node">
+                        <a class="touch-enabled" href="#">
+                            {{ category.details[0].name }}
+                        </a>
+                        <ul class="ul-node">
+                            <li class="__back">
+                                <a href="#" data-plentyflow-element="text, link"><i class="fa fa-angle-left" aria-hidden="true"></i> {{ trans("CeresBaseline::Template.mobileMenuPrev") }}</a>
+                            </li>
+                            <li>
+                                <a href="{{ currentScopeUrl }}{{ urls.trailingSlashSuffix }}" class="touch-enabled" data-plentyflow-element="text, link">
+                                    {{ trans("CeresBaseline::Template.mobileMenuAllItems") }}
+                                </a>
+                            </li>
+                            {% for subcat in category.children %}
+                                <li>
+                                    <a class="touch-enabled" href="{{ currentScopeUrl }}/{{ subcat.details[0].nameUrl }}{{ urls.trailingSlashSuffix }}" data-plentyflow-element="text, link">
+                                        {{ subcat.details[0].name }}
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    </ul>
+</nav>

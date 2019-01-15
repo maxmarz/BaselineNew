@@ -1,0 +1,250 @@
+{% extends getPartial('page-design') %}
+
+{% set showDefaultHomepage = config("Ceres.default.homepage") %}
+
+{% set displayedSliders = [] %}
+{% set sliderCategories = config('CeresBaseline.default.slider') | find("[0-9]+") %}
+{% set latestItemsList = services.item.getLatestItems(12) %}
+
+{% set companyName  = trans("Ceres::Template.headerCompanyName") %}
+
+{% block PartialHead %}
+    <meta name="description" content="{{ trans('Ceres::Template.homepageMetaDescription') }}">
+    <meta name="robots" content="{{ config("Ceres.meta.robots_home") }}">
+
+    <meta property="og:title" content="{{ companyName }}"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:url" content="{{ services.webstoreConfig.getWebstoreConfig().domainSsl }}"/>
+    <meta property="og:image"
+          content="{% if ('http' in companyLogo) or ('layout/' in companyLogo) %}{{ companyLogo }}{% else %}{{ plugin_path('Ceres') }}/{{ companyLogo }}{% endif %}"/>
+
+    <script type="application/ld+json">
+        {"@context": "http://schema.org","@type": "WebSite","url": "{{ services.webstoreConfig.getWebstoreConfig().domainSsl }}","potentialAction":{"@type": "SearchAction","target": "{{ services.webstoreConfig.getWebstoreConfig().domainSsl }}/search?query={search_term}","query-input": "required name=search_term"}}
+    </script>
+
+    <title>{{ companyName }}</title>
+{% endblock %}
+
+{% block PageBody %}
+
+    {# if showDefaultHomepage == "true" #}
+
+        {#
+            {% set currentLang = services.sessionStorage.getLang() %}
+        #}
+
+        <div class="homepage" data-plentyflow-pagename="Startseite" data-plentyflow-homepage="true">
+            <div class="swiper-container" id="home-slider" data-plentyflow-section="Slider">
+                <div class="swiper-wrapper">
+                    {% if config('CeresBaseline.default.slider') == "" %}
+                        <div class="swiper-slide">
+                            <div class="silder-img" style="background-image: url('{{ plugin_path('CeresBaseline') }}/images/homepage/baseline-slider-1.jpg');"></div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="silder-img" style="background-image: url('{{ plugin_path('CeresBaseline') }}/images/homepage/baseline-slider-2.jpg');"></div>
+                        </div>
+                    {% else %}
+                        {% for catID in sliderCategories %}
+
+                            {% set cat = services.category.get(catID,lang) %}
+                            {#
+                                <pre>{{ cat.details|json_encode }}</pre>
+                            #}
+                            {% if cat is not null %}
+                                {% set displayedSliders = displayedSliders | merge([catID]) %}
+                                <div class="swiper-slide" data-plentyflow-modul="Slide-{{ catID }}">
+                                    <div class="silder-img" style="background-image: url('documents/{{ cat.details.first.imagePath }}');">
+                                        <div class="container slider-content">
+                                            <div class="text-center-xs">
+                                                <div class="row">
+                                                    <div class="col-xs-12 col-sm-11 offset-sm-4 col-md-7 offset-md-6  col-lg-6 offset-lg-6">
+                                                        {% if loop.first %}
+                                                            <h1 data-plentyflow-element="title">{{ cat.details.first.name }}</h1>
+                                                        {% else %}
+                                                            <h2 data-plentyflow-element="title" class="h1">{{ cat.details.first.name }}</h2>
+                                                        {% endif %}
+                                                        <p data-plentyflow-element="text">{{ cat.details.first.description }}</p>
+                                                        <a data-plentyflow-element="text, button" href="{{ cat.details.first.description2 }}" class="btn btn-primary">{{ cat.details.first.shortDescription }}</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+
+                        {% endfor %}
+                    {% endif %}
+
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
+                <!-- Add Arrows -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+
+
+
+            <div class="container-max" data-plentyflow-section="Highlights" data-plentyflow-section-element="space, block">
+                <div class="row mt-xs-15 highlights">
+                    <div class="col-xs-12 col-sm-4 mb-xs-15" data-plentyflow-modul="Highlight-Nr.1">
+
+                        {% set highlight1ID = config('CeresBaseline.default.highlight1') %}
+                        {% set highlight1URL = config('CeresBaseline.default.highlight1-url') %}
+                        {% set highlight1 = services.category.get(highlight1ID,lang) %}
+                        <a href="{{ services.category.getURL( highlight1 ,lang) }}">
+                            <img data-plentyflow-element="image" class="img-fluid img-full unveil" src="{% if highlight1URL == ""  %} {{ plugin_path('CeresBaseline') }}/images/homepage/baseline-kachel-1.jpg {% else %}{{ highlight1URL }}{% endif %}" alt="{{ highlight1.details.first.name }}">
+                        </a>
+                    </div>
+                    <div class="col-xs-12 col-sm-4">
+                        <div class="row">
+                            <div class="col-xs-12 mb-xs-15 mb-sm-10 mb-md-15" data-plentyflow-modul="Highlight-Nr.2">
+                                {% set highlight2ID = config('CeresBaseline.default.highlight2') %}
+                                {% set highlight2URL = config('CeresBaseline.default.highlight2-url') %}
+                                {% set highlight2 = services.category.get(highlight2ID,lang) %}
+                                <a href="{{ services.category.getURL( highlight2 ,lang) }}">
+                                    <img data-plentyflow-element="image" class="img-fluid img-full unveil" src="{% if highlight2URL == ""  %} {{ plugin_path('CeresBaseline') }}/images/homepage/baseline-kachel-2.jpg {% else %}{{ highlight2URL }}{% endif %}" alt="{{ highlight2.details.first.name }}">
+                                </a>
+                            </div>
+                            <div class="col-xs-12 mb-xs-15" data-plentyflow-modul="Highlight-Nr.3" data-plentyflow-modul-element="display">
+                                {% set highlight3ID = config('CeresBaseline.default.highlight3') %}
+                                {% set highlight3URL = config('CeresBaseline.default.highlight3-url') %}
+                                {% set highlight3 = services.category.get(highlight3ID,lang) %}
+                                <a href="{{ services.category.getURL( highlight3 ,lang) }}">
+                                    <img  data-plentyflow-element="image" class="img-fluid img-full unveil" src="{% if highlight3URL == ""  %} {{ plugin_path('CeresBaseline') }}/images/homepage/baseline-kachel-3.jpg {% else %}{{ highlight3URL }}{% endif %}" alt="{{ highlight3.details.first.name }}">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4" data-plentyflow-modul="Highlight-Nr.4">
+                        {% set highlight4ID = config('CeresBaseline.default.highlight4') %}
+                        {% set highlight4URL = config('CeresBaseline.default.highlight4-url') %}
+                        {% set highlight4 = services.category.get(highlight4ID,lang) %}
+                        <a href="{{ services.category.getURL( highlight4 ,lang) }}">
+                            <img data-plentyflow-element="image" class="img-fluid img-full unveil" src="{% if highlight4URL == ""  %} {{ plugin_path('CeresBaseline') }}/images/homepage/baseline-kachel-4.jpg {% else %}{{ highlight4URL }}{% endif %}" alt="{{ highlight4.details.first.name }}">
+                        </a>
+                    </div>
+                </div>
+
+                {#{% if config("CeresBaseline.default.showTopseller") == "true" %}
+                    {% include "CeresBaseline::Content.TopItems" %}
+                {% endif %}#}
+
+                {% if config("CeresBaseline.default.showTopseller") == "true" %}
+                {% set itemList = services.itemList.getItemList('tag_list', config("CeresBaseline.default.topsellerTagId")).documents %}
+                <div class="row top-seller mt-xs-40" data-plentyflow-section="Top-Seller">
+                    <div class="col-xs-12">
+                        <div class="text-xs-center" data-plentyflow-modul="Titel">
+                            <h2 data-plentyflow-element="title">{{ config('CeresBaseline.default.topsellerHeadline') }}</h2>
+                        </div>
+
+                        {% set topItems = itemList %}
+
+                        {%  if topItems|length > 0 %}
+                            <div class="row mt-xs-15">
+
+                                <div class="swiper-container product-slider">
+                                    <div class="swiper-wrapper">
+                                        {% set arrID = [] %}
+                                        {% for item in topItems %}
+                                            {% if item is not null %}
+
+                                                {% if item.data.item.id not in arrID %}
+                                                    {% set arrID = arrID|merge([item.data.item.id]) %}
+                                                    <div class="swiper-slide">
+                                                        {% include "CeresBaseline::Category.Item.Partials.CategoryListItem" with { 'item': services.item.getItem(item.data.item.id).documents[0] } %}
+                                                    </div>
+
+                                                {% endif %}
+
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                    <div class="swiper-button-prev swiper-button-black">&nbsp;</div>
+                                    <div class="swiper-button-next swiper-button-black">&nbsp;</div>
+                                </div>
+
+                            </div>
+                        {% endif %}
+
+                    </div>
+                </div>
+                {% endif %}
+
+                <div class="row highlights">
+                    <div class="col-xs-12 col-sm-6 mt-xs-15 mt-sm-0" data-plentyflow-modul="Highlight-Nr.5" data-plentyflow-modul-element="display, space">
+                        {% set highlight5ID = config('CeresBaseline.default.highlight5') %}
+                        {% set highlight5URL = config('CeresBaseline.default.highlight5-url') %}
+                        {% set highlight5 = services.category.get(highlight5ID,lang) %}
+                        <a href="{{ services.category.getURL( highlight5 ,lang) }}">
+                            <img data-plentyflow-element="image" class="img-fluid img-full " src="{% if highlight5URL == ""  %} {{ plugin_path('CeresBaseline') }}/images/homepage/baseline-categorybig-1.jpg {% else %}{{ highlight5URL }}{% endif %}" alt="{{ highlight5.details.first.name }}">
+                        </a>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 mt-xs-15 mt-sm-0" data-plentyflow-modul="Highlight-Nr.6" data-plentyflow-modul-element="display, space">
+                        {% set highlight6ID = config('CeresBaseline.default.highlight6') %}
+                        {% set highlight6URL = config('CeresBaseline.default.highlight6-url') %}
+                        {% set highlight6 = services.category.get(highlight6ID,lang) %}
+                        <a href="{{ services.category.getURL( highlight6 ,lang) }}">
+                            <img data-plentyflow-element="image" class="img-fluid img-full " src="{% if highlight6URL == ""  %} {{ plugin_path('CeresBaseline') }}/images/homepage/baseline-categorybig-2.jpg {% else %}{{ highlight6URL }}{% endif %}" alt="{{ highlight6.details.first.name }}">
+                        </a>
+                    </div>
+                </div>
+
+
+                {#{% if config("CeresBaseline.default.showLatestitem") == "true" %}
+                    {% include "CeresBaseline::Content.NewItems" %}
+                {% endif %}#}
+
+                {% if config("CeresBaseline.default.showLatestitem") == "true" %}
+                {% set itemList = services.itemList.getItemList('tag_list', config("CeresBaseline.default.latestItemsTagId")).documents %}
+                <div class="row top-seller mt-xs-40" data-plentyflow-section="Neuheiten">
+                    <div class="col-xs-12">
+                        <div class="text-xs-center" data-plentyflow-modul="Titel">
+                            <h2 data-plentyflow-element="titel">{{ config('CeresBaseline.default.latestitemHeadline') }}</h2>
+                        </div>
+
+                        {% set topItems = itemList %}
+
+                        {%  if topItems|length > 0 %}
+                            <div class="row mt-xs-15">
+                                <div class="swiper-container product-slider">
+                                    <div class="swiper-wrapper">
+                                        {% set arrID = [] %}
+                                        {% for item in topItems %}
+                                            {% if item is not null %}
+
+                                                {% if item.data.item.id not in arrID %}
+                                                    {% set arrID = arrID|merge([item.data.item.id]) %}
+                                                    <div class="swiper-slide">
+                                                        {% include "CeresBaseline::Category.Item.Partials.CategoryListItem" with { 'item': services.item.getItem(item.data.item.id).documents[0] } %}
+                                                    </div>
+
+                                                {% endif %}
+
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                    <div class="swiper-button-prev swiper-button-black">&nbsp;</div>
+                                    <div class="swiper-button-next swiper-button-black">&nbsp;</div>
+                                </div>
+
+                            </div>
+                        {% endif %}
+
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    {# else #}
+
+        {# block ThemeHomepage #}
+            <!-- theme homepage -->
+        {# endblock #}
+
+    {# endif #}
+
+{% endblock %}
+
+

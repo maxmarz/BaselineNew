@@ -1,0 +1,46 @@
+.cmp.cmp-coupon input {
+  height: 42px;
+}
+.cmp-totals hr {
+  border-color: $gray-light;
+}
+.cmp.cmp-totals {
+  line-height: 20px;
+}
+
+.btn-labeled .btn-label {
+  right: 0;
+}
+.basket h1.h2 {
+  border-bottom: 1px solid $gray-lighter;
+  padding-bottom: 10px;
+}
+.cmp-basket-item, .cmp-basket-preview-item, .cmp-order-item{
+  .item-name{
+    font-weight: 300;
+    color: $gray-base;
+    font-size: 18px;
+    margin-top: -5px;
+  }
+  input.form-control{
+    border-color: #ccc;
+  }
+}
+.cmp-basket-item, .cmp-basket-preview-item, .cmp-order-item {
+  @include media-breakpoint-up(md) {
+    .item-quantity .input-group.vert, .cmp-order-item .item-quantity .input-group.vert {
+      left: 5%;
+    }
+  }
+}
+.cmp-basket-item .item-total-price{
+  font-size:16px !important;
+}
+
+@media (min-width: 768px) and (max-width:1024px){
+
+  .basket-item-container .basket-item{
+    display:block !important;
+  }
+
+}

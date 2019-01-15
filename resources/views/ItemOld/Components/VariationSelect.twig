@@ -1,0 +1,18 @@
+<script type="x/template" id="vue-variation-select">
+    <div class="col-xs-12" v-for="(attributeId, attribute) in attributes" data-plentyflow-modul="Variantenauswahl">
+        <div class="input-variation-select">
+            <label data-plentyflow-element="text, block">${ attribute.name }</label>
+            <div class="select-wrapper">
+                <select class="custom-select" v-model="selectedAttributes[attributeId]" data-plentyflow-element="text, input">
+                    <option :value="" disabled>{{ trans("Ceres::Template.singleItemPleaseSelect") }}</option>
+                    <option v-for="(attributeValueId, attributeValue) in attribute.values"
+                            :value="attributeValueId"
+                            :disabled="!isEnabled(attributeId, attributeValueId)"
+                            data-plentyflow-element="text">
+                        ${ attributeValue }
+                    </option>
+                </select>
+            </div>
+        </div>
+    </div>
+</script>
