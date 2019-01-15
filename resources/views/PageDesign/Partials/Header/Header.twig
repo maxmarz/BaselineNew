@@ -16,8 +16,8 @@
 
 {% block PartialHead %}
   {% if LayoutContainer.show("Ceres::Template.StyleOverwrite") | trim is empty %}
-    <link data-sass-root="{{ plugin_path('CeresEigenesBaseline') }}" data-sass-original="{{ plugin_path('CeresEigenesBaseline') }}/css/baseline.scss" rel="stylesheet" href="{{ plugin_path('CeresEigenesBaseline') }}/css/baseline.css">
-    <link data-sass-root="{{ plugin_path('CeresEigenesBaseline') }}" data-sass-original="{{ plugin_path('CeresEigenesBaseline') }}/css/main.scss" rel="stylesheet" href="{{ plugin_path('CeresEigenesBaseline') }}/css/main.css">
+    <link data-sass-root="{{ plugin_path('CeresBaseline') }}" data-sass-original="{{ plugin_path('CeresBaseline') }}/css/baseline.scss" rel="stylesheet" href="{{ plugin_path('CeresBaseline') }}/css/baseline.css">
+    <link data-sass-root="{{ plugin_path('CeresBaseline') }}" data-sass-original="{{ plugin_path('CeresBaseline') }}/css/main.scss" rel="stylesheet" href="{{ plugin_path('CeresBaseline') }}/css/main.css">
   {% endif %}
 {% endblock %}
 
