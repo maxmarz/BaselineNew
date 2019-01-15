@@ -208,7 +208,7 @@
     function suchfeld(){
         switch (aktiv){
             case false:
-                if(window.innerWidth){
+                if(window.innerWidth >= 992){
                     aktiv = true;
                     document.getElementById("sucheSchatten").style.display = "inline";
                     break;
