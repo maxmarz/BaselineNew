@@ -106,7 +106,11 @@
 
 
 <div class="container-max page-header">
-    <a href="javascript:suchfeld();" id="searchBox" class="hidden-lg-up cmp collapse {% if services.template.isSearch() %} in{% endif %}"></a>
+<div class="search-desktop hidden-md-down pull-lg-right" data-plentyflow-modul="Search-Icon">
+<a href="javascript: suchfeld()"><button class="search-trigger btn">
+    <i data-plentyflow-element="text, link" class="fa fa-search sm-up"></i>
+</button></a>
+</div>
 
     {% if enableCurrencySelect == "true" %}
         <div id="currencySelect" class="cmp cmp-currency-select collapse">
