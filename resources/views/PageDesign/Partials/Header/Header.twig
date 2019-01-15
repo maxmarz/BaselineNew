@@ -106,10 +106,11 @@
 
 
 <div class="container-max page-header">
-    <div id="searchBox" class="hidden-lg-up cmp collapse {% if services.template.isSearch() %} in{% endif %}">
-        {# TODO: needs to be defined by plenty, start level is SECTION #}
-        <item-search template="#vue-item-search"></item-search>
+    <div id="searchBox" class="hidden-lg-up cmp collapse {% if services.template.isSearch() %} in {% endif %}">
+      {# TODO: needs to be defined by plenty, start level is SECTION #}
+      <item-search template="#vue-item-search"></item-search>
     </div>
+</div>
 
     {% if enableCurrencySelect == "true" %}
         <div id="currencySelect" class="cmp cmp-currency-select collapse">
