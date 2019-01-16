@@ -32,59 +32,55 @@
     {% endif %}
     <div class="footer-bg" data-plentyflow-modul="Main-Footer" data-plentyflow-modul-element="block, space">
         <div class="container-max">
-            <div class="row">
-                <div class="col-md-9 col-sm-12">
-                    <div class="row">
-                        {% for i in 1..3 %}
-                            <div class="col-xs-6 col-sm-4 ">
-                                <nav class="footer-column m-b-2">
-                                    {% if lang == 'en' %}
-                                        {% set colTitle = config('CeresBaseline.footer.col_' ~ i ~ '_title_en') %}
-                                    {% else %}
-                                        {% set colTitle = config('CeresBaseline.footer.col_' ~ i ~ '_title') %}
-                                    {% endif %}
-                                    <div class="h4" data-plentyflow-element="title">{{ colTitle }}</div>
-                                    <ul class="list-unstyled">
+          <div class="container" style="text-align: center;">
+              <hr></hr>
+              <div class="h4" data-plentyflow-element="title">
+                  Telefon : 061 511 42 70
+                  <br/>E-Mail:   <a href="mailto:anfrage@techniworld.ch">anfrage@techniworld.ch</a>
+                  <br/>Montag - Freitag
+                  <br/>9.oo - 12.oo Uhr
+                  <br/>14.oo - 17.oo Uhr
+              </div>
+              <hr></hr>
 
-                                        {% set footerCategories = config('CeresBaseline.footer.col_' ~ i ~ '_categories') | find("[0-9]+") %}
-                                        {% for catID in footerCategories %}
+              <div class="col-md-3">
+                  <div class="h4" data-plentyflow-element="title">Unternehmen</div>
+                  <a href="/gtc/">AGB</a>
+                  <br/><a href="/privacy-policy/">Datenschutz</a>
+                  <br/><a href="/legal-disclosure/">Impressum</a>
+                  <br/><a href="/contact/">Kontakt</a>
+              </div>
 
-                                            {% set cat = services.category.get(catID) %}
+              <div class="col-md-3">
+                  <div class="h4" data-plentyflow-element="title">Zahlungsarten</div>
+                  <div style="width: 180px; margin: auto;">
+                    <img alt="SSL" src="{{ plugin_path('CeresEigenesBaseline') }}/images/ssl_v1.png" style="float:left; margin-right:5px; margin-bottom:10px;" />
+                    <img alt="Vorkasse" src="{{ plugin_path('CeresEigenesBaseline') }}/images/vorkasse_de_v1.png" style="margin-right:5px; margin-bottom:5px;" />
+                    <img alt="PayPal" src="{{ plugin_path('CeresEigenesBaseline') }}/images/paypal_v1.png" style="margin-right:5px; margin-bottom:5px;" />
+                    <img alt="Visa" src="{{ plugin_path('CeresEigenesBaseline') }}/images/visa_v1.png" style="width: 49px; height: 34px; margin-right:5px; margin-bottom:5px;" />
+                    <img alt="MasterCard" src="{{ plugin_path('CeresEigenesBaseline') }}/images/MasterCard.png" style="width: 50px; height: 32px; margin-right:5px; margin-bottom:5px;" title="MasterCard" />
+                    <img alt="PostFinance" src="{{ plugin_path('CeresEigenesBaseline') }}/images/postfinance_v1.png" style="width: 95px; height: 29px;">
+                  </div>
+              </div>
 
-                                            {% if cat is not null %}
-                                                {% set displayedCategories = displayedCategories | merge([catID]) %}
-                                                <li>
-                                                    <a data-plentyflow-element="text, link, 2" href="{{ services.category.getURL( cat ) }}">
-                                                        {{ cat.details.first.name }}
-                                                    </a>
-                                                </li>
-                                            {% endif %}
+              <div class="col-md-3">
+                  <div class="h4" data-plentyflow-element="title">Projektpreise</div>
+                  <div style="text-align: justify;">
+                      Sie benötigen eine größere Menge eines bestimmten Produkts? <br/>Senden Sie Ihre Projektanfrage einfach an <a href="mailto:anfrage@techniworld.ch">anfrage@techniworld.ch</a> und Sie erhalten umgehend unsere Offerte.
+                  </div>
+              </div>
 
-                                        {% endfor %}
+              <div class="col-md-3">
+                  <div class="h4" data-plentyflow-element="title">Konditionen</div>
+                  <div style="text-align: justify;">
+                      Alle Preise inkl. MwSt portofrei geliefert. Preisänderungen oder evtl. typographische Fehler vorbehalten. Alle Produktnamen und eingetragenen Warenzeichen gehören ihren jeweiligen Inhabern. Photos und Abbildungen dienen zur Information und sind nicht vertragsbindend.
+                  </div>
+              </div>
+          </div>
 
-                                    </ul>
-                                </nav>
-                            </div>
-                        {% endfor %}
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="h4" data-plentyflow-element="title">{{ paymentTitle }}</div>
-                    {% set paymentMethodContent = LayoutContainer.show("Ceres::Homepage.PaymentMethods") %}
-                    {% if paymentMethodContent|trim is not empty %}
-                        <div class="services-payment m-b-1">
-                            {{ paymentMethodContent }}
-                        </div>
-                    {% endif %}
-                    {% set shippingContent = LayoutContainer.show("Ceres::Homepage.Shipping") %}
-                    {% if shippingContent|trim is not empty %}
-                        <div class="services-shipping m-b-1">
-                            {{ shippingContent }}
-                        </div>
-                    {% endif %}
-                </div>
-            </div>
+          <div class="container" style="text-align: center;">
+              Copyright © 2018 <a href="/legal-disclosure/">techniworld.ch by BHS Binkert Schweiz GmbH</a>
+          </div>
         </div>
     </div>
     <div class="sub-footer" data-plentyflow-modul="Sub-Footer" data-plentyflow-modul-element="block, space">
