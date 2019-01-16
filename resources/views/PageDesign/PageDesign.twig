@@ -18,6 +18,8 @@
 
 <!DOCTYPE html>
 
+<html lang="{{ lang }}" data-framework="vue" prefix="og: http://ogp.me/ns#">
+
 {% set findologicKey        = config("CeresBaseline.default.findologicKey") %}
 {% set findologicIsActive   = config("CeresBaseline.default.findologicIsActive") and findologicKey|length > 0 %}
 
@@ -34,10 +36,6 @@
     {{ services.crossSelling.setType(config("Ceres.item.lists.cross_selling_type")) }}
 {% endif %}
 
-
-
-
-<html lang="{{ lang }}" data-framework="vue" prefix="og: http://ogp.me/ns#">
 <head>
     {% include getPartial('head') %}
 
@@ -139,7 +137,7 @@
 
             <!--    LOGIN MODAL   -->
             <!--       START      -->
-            <div id="login-modal-wrapper" data-plentyflow-section="Login-Modal" data-plentyflow-onlyhomepage="true">
+            {#}<div id="login-modal-wrapper" data-plentyflow-section="Login-Modal" data-plentyflow-onlyhomepage="true">
                 <div class="modal fade login-modal" id="login" tabindex="-1" role="dialog">
                     <div class="modal-dialog">
                         <div class="modal-content">
@@ -149,17 +147,25 @@
                             </div>
                             <div class="modal-body">
 
-                                {# TODO: needs to be defined by plenty, start level is MODUL
-                                <login template="#vue-login" modal-element="login-modal-wrapper"></login>#}
-
-                                <form id="login-form-26" class="login-container"><div class="modal-body"><div class="row"><div class="col-xs-12"><div data-validate="mail" class="input-unit"><input type="email" name="email" id="5c3f55800b9a9" data-autofocus=""> <label for="5c3f55800b9a9">E-Mail*</label></div> <span class="error-msg">Bitte geben Sie eine gültige E-Mail-Adresse an.</span></div> <div class="col-xs-12"><div data-validate="text" class="input-unit no-bottom"><input type="password" name="password" id="5c3f55800ba8c"> <label for="5c3f55800ba8c">Passwort*</label></div> <span class="error-msg">Bitte geben Sie Ihr Passwort ein.</span></div></div></div> <div class="modal-footer"><div class="reset-pwd-direction"><a href="javascript:void(0)" class="small">Passwort vergessen?</a></div> <div class=""><button class="btn btn-primary btn-medium"><i class="fa fa-user"></i>
-                                Anmelden
-                                </button></div></div></form>
-
+                                {# TODO: needs to be defined by plenty, start level is MODUL#}
+                                <login template="#vue-login" modal-element="login-modal-wrapper"></login>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>#}
+            <div id="login-modal-wrapper">
+              <div class="modal fade login-modal" id="login" tabindex="-1" role="dialog">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                      <div class="modal-title h3">{{ trans("Ceres::Template.login") }}</div>
+                    </div>
+                    <login template="#vue-login" modal-element="login-modal-wrapper"></login>
+                  </div>
+                </div>
+              </div>
             </div>
             <!--    LOGIN MODAL   -->
             <!--        END       -->
