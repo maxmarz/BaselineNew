@@ -76,18 +76,18 @@
 
 @media screen and (max-width: 1200px) {
   .carousel-item {
-    height: 600px;
+    height: 500px;
   }
 }
 
 @media screen and (max-width: 600px) {
   .carousel-item {
-    height: 400px;
+    height: 300px;
   }
 }
 
 @media screen and (max-width: 450px) {
   .carousel-item {
-    height: 250px;
+    height: 200px;
   }
 }
