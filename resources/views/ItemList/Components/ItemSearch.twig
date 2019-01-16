@@ -24,7 +24,7 @@
 <script type="x/template" id="vue-item-search">
     <div class="search-box-inner">
         <div class="search-box-shadow-frame">
-            <input type="search" class="search-input baseline-search-input" ref="searchInput" @input="autocomplete($event.target.value)"
+            <input id="smallInputSearch" type="search" class="search-input baseline-search-input" ref="searchInput" @input="autocomplete($event.target.value)"
                    @keyup.enter="prepareSearch()" @keyup.down="keydown()" @keyup.up="keyup()"
                    @focus="isSearchFocused = true" @blur="setIsSearchFocused(false)"
                    autofocus placeholder="{{ trans('CeresBaseline::Template.searchPlaceholder') }}">
@@ -44,4 +44,3 @@
         </div>
     </div>
 </script>
-

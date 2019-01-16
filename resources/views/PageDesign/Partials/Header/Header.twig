@@ -220,7 +220,11 @@
     }
 
     function suche(){
-        window.location.href = "/search/?query=" + document.getElementById("suchfeld-input").value.replace(" ", "%20");
+        if(window.innerWidth >= 992){
+          window.location.href = "/search/?query=" + document.getElementById("suchfeld-input").value.replace(" ", "%20");
+        }else{
+          window.location.href = "/search/?query=" + document.getElementById("smallInputSearch").value.replace(" ", "%20");
+        }
     }
 
     function enterPressed(){
