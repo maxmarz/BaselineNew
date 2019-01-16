@@ -51,30 +51,30 @@
                     </div>
                     <hr></hr>
 
-                    <div class="col-md-3">
-                        <div class="h4" data-plentyflow-element="title">{% set colTitle = config('CeresBaseline.footer.col_' ~ 1 ~ '_title') %}</div>
+                    <div class="footer-column">
+                        <div class="h4" data-plentyflow-element="title">{% config('CeresBaseline.footer.col_' ~ 1 ~ '_title') %}</div>
                         <a href="/gtc/">AGB</a>
                         <br/><a href="/privacy-policy/">Datenschutz</a>
                         <br/><a href="/legal-disclosure/">Impressum</a>
                         <br/><a href="/contact/">Kontakt</a>
                     </div>
 
-                    <div class="col-md-3">
-                        <div class="h4" data-plentyflow-element="title">{% set colTitle = config('CeresBaseline.footer.col_' ~ 2 ~ '_title') %}</div>
+                    <div class="footer-column">
+                        <div class="h4" data-plentyflow-element="title">{% config('CeresBaseline.footer.col_' ~ 2 ~ '_title') %}</div>
                         <div style="text-align: justify;">
                             Sie benötigen eine größere Menge eines bestimmten Produkts? <br/>Senden Sie Ihre Projektanfrage einfach an <a href="mailto:anfrage@techniworld.ch">anfrage@techniworld.ch</a> und Sie erhalten umgehend unsere Offerte.
                         </div>
                     </div>
 
-                    <div class="col-md-3">
-                        <div class="h4" data-plentyflow-element="title">{% set colTitle = config('CeresBaseline.footer.col_' ~ 3 ~ '_title') %}</div>
+                    <div class="footer-column">
+                        <div class="h4" data-plentyflow-element="title">{% config('CeresBaseline.footer.col_' ~ 3 ~ '_title') %}</div>
                         <div style="text-align: justify;">
                             Alle Preise inkl. MwSt portofrei geliefert. Preisänderungen oder evtl. typographische Fehler vorbehalten. Alle Produktnamen und eingetragenen Warenzeichen gehören ihren jeweiligen Inhabern. Photos und Abbildungen dienen zur Information und sind nicht vertragsbindend.
                         </div>
                     </div>
                 </div>
 
-                <div class="col-md-3">
+                <div class="footer-column">
                     <div class="h4" data-plentyflow-element="title">{{ paymentTitle }}</div>
                     <div style="width: 180px; margin: auto;">
                       <img alt="SSL" src="{{ plugin_path('CeresBaseline') }}/images/zahlungsmittel/ssl_v1.png" style="float:left; margin-right:5px; margin-bottom:10px;" />
