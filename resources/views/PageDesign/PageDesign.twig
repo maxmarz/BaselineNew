@@ -6,19 +6,28 @@
 {{ component( "Ceres::Customer.Components.Login" ) }}
 {{ component( "Ceres::Customer.Components.Registration" ) }}
 {{ component( "Ceres::Basket.Components.AddItemToBasketOverlay" ) }}
-{{ component( "CeresEigenesBaseline::ItemList.Components.ItemSearch" ) }}
 {{ component( "Ceres::PageDesign.Components.Popper" ) }}
+{# component( "CeresBaseline::Containers.Components.ContainerItemList" ) #}
+{{ component( "CeresBaseline::ItemList.Components.ItemSearch" ) }}
+{{ component( "Ceres::PageDesign.Components.MobileNavigation" ) }}
+{{ component( "CeresBaseline::Newsletter.Components.NewsletterInput" ) }}
+{{ component( "Ceres::Customer.Components.ForgotPassword" ) }}
 
 {% set currencyFormat = config("Ceres.currency.format") %}
-
+{% set defaultLanguage = services.webstoreConfig.getDefaultLanguage() %}
 
 <!DOCTYPE html>
 
-{% set findologicKey        = config("CeresEigenesBaseline.default.findologicKey") %}
-{% set findologicIsActive   = config("CeresEigenesBaseline.default.findologicIsActive") and findologicKey|length > 0 %}
+{% set findologicKey        = config("CeresBaseline.default.findologicKey") %}
+{% set findologicIsActive   = config("CeresBaseline.default.findologicIsActive") and findologicKey|length > 0 %}
 
 {% set shippingCat          = config("Ceres.global.shippingCostsCategoryId") %}
-{% set categories           = services.category.getNavigationTree("item", lang, 6) %}
+{% if config("CeresBaseline.default.contentPagesInMenu") == 'true' %}
+    {% set categories           = services.category.getNavigationTree("all", lang, 6) %}
+{% else %}
+    {% set categories           = services.category.getNavigationTree("item", lang, 6) %}
+{% endif %}
+
 
 {% if services.template.isCategory() or services.template.isItem() %}
     {% set categoryBreadcrumbs = services.category.getHierarchy() %}
@@ -56,14 +65,6 @@
         {% include styleTemplate.path ignore missing with styleTemplate.params %}
     {% endfor %}
 
-    <script type='text/javascript'>
-        (function (d, t) {
-            var bh = d.createElement(t), s = d.getElementsByTagName(t)[0];
-            bh.type = 'text/javascript';
-            bh.src = 'https://www.bugherd.com/sidebarv2.js?apikey=jqt0jkxxmteueea09yqhaw';
-            s.parentNode.insertBefore(bh, s);
-        })(document, 'script');
-    </script>
 </head>
 
 <body>
@@ -90,7 +91,7 @@
         <!--    MOBILE MENU    -->
         <!--       START       -->
         <div class="left-sidebar" data-plentyflow-section="Mobile-Menu" data-plentyflow-onlyhomepage="true">
-            {% include "CeresEigenesBaseline::PageDesign.Partials.Header.MobileNavigation" %}
+            {% include "CeresBaseline::PageDesign.Partials.Header.MobileNavigation" %}
         </div>
         <!--    MOBILE MENU    -->
         <!--        END        -->
@@ -148,8 +149,12 @@
                             </div>
                             <div class="modal-body">
 
-                                {# TODO: needs to be defined by plenty, start level is MODUL #}
-                                <login template="#vue-login" modal-element="login-modal-wrapper"></login>
+                                {# TODO: needs to be defined by plenty, start level is MODUL
+                                <login template="#vue-login" modal-element="login-modal-wrapper"></login>#}
+
+                                <form id="login-form-26" class="login-container"><div class="modal-body"><div class="row"><div class="col-xs-12"><div data-validate="mail" class="input-unit"><input type="email" name="email" id="5c3f55800b9a9" data-autofocus=""> <label for="5c3f55800b9a9">E-Mail*</label></div> <span class="error-msg">Bitte geben Sie eine gültige E-Mail-Adresse an.</span></div> <div class="col-xs-12"><div data-validate="text" class="input-unit no-bottom"><input type="password" name="password" id="5c3f55800ba8c"> <label for="5c3f55800ba8c">Passwort*</label></div> <span class="error-msg">Bitte geben Sie Ihr Passwort ein.</span></div></div></div> <div class="modal-footer"><div class="reset-pwd-direction"><a href="javascript:void(0)" class="small">Passwort vergessen?</a></div> <div class=""><button class="btn btn-primary btn-medium"><i class="fa fa-user"></i>
+                                Anmelden
+                                </button></div></div></form>
 
                             </div>
                         </div>
@@ -201,7 +206,7 @@
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">×</span>
                             </button>
-                            <h5 data-plentyflow-element="title">Ich suche nach</h5>
+                            <h5 data-plentyflow-element="title">{{ trans('CeresBaseline::Template.searchPlaceholder') }}</h5>
                         </div>
                         <div class="modal-content" data-plentyflow-modul="Modal-Content">
                             <div class="modal-body">
@@ -209,7 +214,7 @@
                                     <div class="search-box-inner">
                                         <div class="search-box-shadow-frame input-group">
                                             <form method="GET" id="searchForm">
-                                                <input id="searchField" name="searchField" class="form-control" placeholder="Suchbegriff eingeben" autofocus="" autocomplete="off" type="search" data-plentyflow-modul="Modal-Content">
+                                                <input id="searchField" name="searchField" class="form-control" placeholder="{{ trans('CeresBaseline::Template.searchPlaceholder') }}" autofocus="" autocomplete="off" type="search" data-plentyflow-modul="Modal-Content">
                                                 <span class="input-group-btn">
                                                     <button data-plentyflow-element="text, button" class="search-submit btn btn-primary" type="submit">
                                                         <i class="fa fa-search sm-up"></i>
@@ -218,7 +223,9 @@
                                             </form>
                                         </div>
                                     {% else %}
-                                        <item-search template="#vue-item-search"></item-search>
+                                        <div id="searchBox" class="cmp cmp-search-box">
+                                            <item-search template="#vue-item-search"></item-search>
+                                        </div>
                                     {% endif %}
                                 </div>
                             </div>
@@ -232,6 +239,10 @@
             <!-- BASKET MODAL -->
             <add-item-to-basket-overlay template="#vue-add-item-to-basket-overlay" :basket-add-information="{{ ceresConfig.basket.addItemToBasketConfirm | json_encode() }}"></add-item-to-basket-overlay>
             <!-- ./BASKET MODAL -->
+
+            <!-- PASSWORD RESET MODAL -->
+            <forgot-password-modal></forgot-password-modal>
+            <!-- ./PASSWORD RESET MODAL -->
 
             <!-- SHIPPINGCOSTS MODAL -->
             <div id="shippingscosts-modal-wrapper">
@@ -263,13 +274,16 @@
     <script>
         App = {
             config: {{ ceresConfig | json_encode | raw }},
-            activeCurrency: "{{ services.checkout.getCurrencyData()[currencyFormat] }}",
+            activeCurrency: "{{ currencyData[currencyFormat] }}",
             currencyPattern: {{  services.checkout.getCurrencyPattern() | json_encode | raw }},
             isCategoryView: {% if services.template.isCategory() == "1" %}true{% else %}false{% endif %},
             isCheckoutView : {% if services.template.isCheckout() == "1" %}true{% else %}false{% endif %},
             isSearch: {% if services.template.isSearch() == "1" %}true{% else %}false{% endif %},
+            templateEvent: "{{templateEvent}}",
             language: "{{ lang }}",
-            decimalSeparator: "{{ config("IO.format.separator_decimal") }}"
+            defaultLanguage: "{{ defaultLanguage }}",
+            decimalSeparator: "{{ config("IO.format.separator_decimal") }}",
+            urlTrailingSlash: {{ urls.appendTrailingSlash | json_encode }}
         };
     </script>
 
