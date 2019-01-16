@@ -6,6 +6,13 @@
 {{ component( "CeresBaseline::ItemList.Components.ItemSearch" ) }}
 {{ component( "Ceres::WishList.Components.WishListCount" ) }}
 
+{% block PartialHead %}
+  {% if LayoutContainer.show("Ceres::Template.StyleOverwrite") | trim is empty %}
+    <link data-sass-root="{{ plugin_path('CeresBaseline') }}" data-sass-original="{{ plugin_path('CeresBaseline') }}/css/baseline.scss" rel="stylesheet" href="{{ plugin_path('CeresBaseline') }}/css/baseline.css">
+    <link data-sass-root="{{ plugin_path('CeresBaseline') }}" data-sass-original="{{ plugin_path('CeresBaseline') }}/css/main.scss" rel="stylesheet" href="{{ plugin_path('CeresBaseline') }}/css/main.css">
+  {% endif %}
+{% endblock %}
+
 {% set lang = services.sessionStorage.getLang() %}
 {% set numberOfHighlights = config('CeresBaseline.header.number_of_highlights') %}
 {% set enabledRoutes = config("IO.routing.enabled_routes") | split(', ') %}
@@ -13,13 +20,6 @@
 {% set enableCurrencySelect = config("Ceres.currency.enable_selection") == "true" and activeCurrencies | length > 0 %}
 {% set currencyFormat = config("Ceres.currency.format") %}
 {% set currencyFormatSelect = config("Ceres.currency.format_selection") %}
-
-{% block PartialHead %}
-  {% if LayoutContainer.show("Ceres::Template.StyleOverwrite") | trim is empty %}
-    <link data-sass-root="{{ plugin_path('CeresBaseline') }}" data-sass-original="{{ plugin_path('CeresBaseline') }}/css/baseline.scss" rel="stylesheet" href="{{ plugin_path('CeresBaseline') }}/css/baseline.css">
-    <link data-sass-root="{{ plugin_path('CeresBaseline') }}" data-sass-original="{{ plugin_path('CeresBaseline') }}/css/main.scss" rel="stylesheet" href="{{ plugin_path('CeresBaseline') }}/css/main.css">
-  {% endif %}
-{% endblock %}
 
 <header class="header" data-plentyflow-section="Header">
     <div class="top-header-bg hidden-md-down" data-plentyflow-section="Top-Header" data-plentyflow-section-element="block" data-plentyflow-onlyhomepage="true">
