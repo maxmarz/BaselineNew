@@ -5,6 +5,10 @@
 {% set paymentTitle        = config('CeresBaseline.footer.payment_title') %}
 {% set newsletter          = config('CeresBaseline.footer.newsletter') %}
 
+{% set colTitle1 = config('CeresBaseline.footer.col_' ~ 1 ~ '_title') %}
+{% set colTitle2 = config('CeresBaseline.footer.col_' ~ 2 ~ '_title') %}
+{% set colTitle3 = config('CeresBaseline.footer.col_' ~ 3 ~ '_title') %}
+
 
 <div id="footer" data-plentyflow-section="Footer" data-plentyflow-section-element="space" data-plentyflow-onlyhomepage="true">
 
@@ -52,7 +56,7 @@
                     <hr></hr>
 
                     <div class="footer-column">
-                        <div class="h4" data-plentyflow-element="title">{% config('CeresBaseline.footer.col_' ~ 1 ~ '_title') %}</div>
+                        <div class="h4" data-plentyflow-element="title">{{ colTitle1 }}</div>
                         <a href="/gtc/">AGB</a>
                         <br/><a href="/privacy-policy/">Datenschutz</a>
                         <br/><a href="/legal-disclosure/">Impressum</a>
@@ -60,14 +64,14 @@
                     </div>
 
                     <div class="footer-column">
-                        <div class="h4" data-plentyflow-element="title">{% config('CeresBaseline.footer.col_' ~ 2 ~ '_title') %}</div>
+                        <div class="h4" data-plentyflow-element="title">{{ colTitle2 }}</div>
                         <div style="text-align: justify;">
                             Sie benötigen eine größere Menge eines bestimmten Produkts? <br/>Senden Sie Ihre Projektanfrage einfach an <a href="mailto:anfrage@techniworld.ch">anfrage@techniworld.ch</a> und Sie erhalten umgehend unsere Offerte.
                         </div>
                     </div>
 
                     <div class="footer-column">
-                        <div class="h4" data-plentyflow-element="title">{% config('CeresBaseline.footer.col_' ~ 3 ~ '_title') %}</div>
+                        <div class="h4" data-plentyflow-element="title">{{ colTitle3 }}</div>
                         <div style="text-align: justify;">
                             Alle Preise inkl. MwSt portofrei geliefert. Preisänderungen oder evtl. typographische Fehler vorbehalten. Alle Produktnamen und eingetragenen Warenzeichen gehören ihren jeweiligen Inhabern. Photos und Abbildungen dienen zur Information und sind nicht vertragsbindend.
                         </div>
