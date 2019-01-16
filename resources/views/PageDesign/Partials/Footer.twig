@@ -2,8 +2,8 @@
 
 {% set displayedCategories = [] %}
 {% set numberOfFeatures    = config('Ceres.footer.number_of_features') %}
-{% set paymentTitle        = config('CeresEigenesBaseline.footer.payment_title') %}
-{% set newsletter          = config('CeresEigenesBaseline.footer.newsletter') %}
+{% set paymentTitle        = config('CeresBaseline.footer.payment_title') %}
+{% set newsletter          = config('CeresBaseline.footer.newsletter') %}
 
 
 <div id="footer" data-plentyflow-section="Footer" data-plentyflow-section-element="space" data-plentyflow-onlyhomepage="true">
@@ -95,10 +95,10 @@
                         {% for i in 1..3 %}
                             <div class="col-xs-6 col-sm-4 ">
                                 <nav class="footer-column m-b-2">
-                                    <div class="h4" data-plentyflow-element="title">{{ config('CeresEigenesBaseline.footer.col_' ~ i ~ '_title') }}</div>
+                                    <div class="h4" data-plentyflow-element="title">{{ config('CeresBaseline.footer.col_' ~ i ~ '_title') }}</div>
                                     <ul class="list-unstyled">
 
-                                        {% set footerCategories = config('CeresEigenesBaseline.footer.col_' ~ i ~ '_categories') | find("[0-9]+") %}
+                                        {% set footerCategories = config('CeresBaseline.footer.col_' ~ i ~ '_categories') | find("[0-9]+") %}
                                         {% for catID in footerCategories %}
 
                                             {% set cat = services.category.get(catID) %}
@@ -143,13 +143,13 @@
         <div class="container-max">
             <div class="row">
                 <div class="col-xs-12 col-sm-6 text-xs-center text-sm-left" data-plentyflow-element="text">
-                    {% set shippingID  = config("CeresEigenesBaseline.pages.shipping") %}
+                    {% set shippingID  = config("CeresBaseline.pages.shipping") %}
                     {% set shippingCat = services.category.get(shippingID) %}
                     * {{ trans("Ceres::Template.itemInclVAT") }} {{ trans("Ceres::Template.itemExclusive") }}
                     <a {% if shippingCat is not empty %} data-toggle="modal" href="#shippingscosts"{% endif %} title="{{ trans("Ceres::Template.itemShippingCosts") }}">{{ trans("Ceres::Template.itemShippingCosts") }}</a>
                 </div>
                 <!--div class="col-xs-12 col-sm-6 text-sm-right text-xs-center mt-xs-20 mt-sm-0">
-                    <span data-plentyflow-element="text">Powered by</span> <a href="http://plentyflow.de/" title="plentyflow" target="_blank"><img src="{{ plugin_path('CeresEigenesBaseline') }}/images/icon-footer.png" alt="footer logo"></a>
+                    <span data-plentyflow-element="text">Powered by</span> <a href="http://plentyflow.de/" title="plentyflow" target="_blank"><img src="{{ plugin_path('CeresBaseline') }}/images/icon-footer.png" alt="footer logo"></a>
                 </div-->
             </div>
         </div>
