@@ -1,5 +1,10 @@
 {% import "Ceres::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
 
+{% set name =           config("system.company.name") %}
+{% set email =          config("system.company.email") %}
+{% set fax =            config("system.company.fax") %}
+{% set fon =            config("system.company.fon") %}
+
 {% set displayedCategories = [] %}
 {% set numberOfFeatures    = config('Ceres.footer.number_of_features') %}
 {% set paymentTitle        = config('CeresBaseline.footer.payment_title') %}
@@ -47,11 +52,10 @@
                 <div class="container" style="text-align: center;">
                     <hr></hr>
                     <div class="h4" data-plentyflow-element="title">
-                        Telefon : 061 511 42 70
-                        <br/>E-Mail:   <a href="{{ trans("Ceres::Template.contactMail") }}">{{ trans("Ceres::Template.contactMail") }}</a>
+                        Telefon : {{ fon }}
+                        <br/>E-Mail:   <a href="mailto:{{ email }}">{{ email }}</a>
                         <br/>Montag - Freitag
-                        <br/>9.oo - 12.oo Uhr
-                        <br/>14.oo - 17.oo Uhr
+                        <br/>{{ trans("Ceres::Template.contactOpeningTimes") }}
                     </div>
                     <hr></hr>
 
@@ -66,7 +70,7 @@
                     <div class="footer-column m-b-2 col-md-3">
                         <div class="h4" data-plentyflow-element="title">{{ colTitle2 }}</div>
                         <div style="text-align: justify;">
-                            Sie benötigen eine größere Menge eines bestimmten Produkts? <br/>Senden Sie Ihre Projektanfrage einfach an <a href="mailto:anfrage@techniworld.ch">anfrage@techniworld.ch</a> und Sie erhalten umgehend unsere Offerte.
+                            Sie benötigen eine größere Menge eines bestimmten Produkts? <br/>Senden Sie Ihre Projektanfrage einfach an <a href="mailto:{{ email }}">{{ email }}</a> und Sie erhalten umgehend unsere Offerte.
                         </div>
                     </div>
 
@@ -91,7 +95,7 @@
                 </div>
 
                 <div class="container" style="text-align: center;">
-                    Copyright © 2018 <a href="/legal-disclosure/">techniworld.ch by BHS Binkert Schweiz GmbH</a>
+                    Copyright © 2018 <a href="/legal-disclosure/">techniworld.ch by {{ name }}</a>
                 </div>
             </div>
         </div>
