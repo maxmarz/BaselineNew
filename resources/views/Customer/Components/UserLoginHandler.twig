@@ -1,3 +1,4 @@
+<!-- Login Test -->
 <script type="x/template" id="vue-user-login-handler">
     <div id="login-change">
         <div class="dropdown" v-if="isLoggedIn">
@@ -12,11 +13,11 @@
             </div>
         </div>
         <div v-if="!isLoggedIn">
-            <a data-toggle="modal" href="/login/" @click="unmarkInputFields()">
+            <a href="/login/">
                 <i class="fa fa-user" aria-hidden="true"></i>
                 <span class="hidden-xs-down">{{ trans("Ceres::Template.login") }}</span>
             </a>
-            <a data-toggle="modal" href="/register/" @click="unmarkInputFields()">
+            <a href="/register/">
                 <i class="fa fa-user-plus" aria-hidden="true"></i>
                 <span class="hidden-xs-down">{{ trans("Ceres::Template.loginRegister") }}</span>
             </a>
