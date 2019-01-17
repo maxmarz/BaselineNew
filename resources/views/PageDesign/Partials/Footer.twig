@@ -54,7 +54,7 @@
                     <div class="h4" data-plentyflow-element="title">
                         Telefon: {{ fon }}
                         <br/>E-Mail:<a href="mailto:{{ email }}">{{ email }}</a>
-                        <br/>Öffnungszeiten:<br/>{{ trans("Ceres::Template.contactOpeningTimes") }}
+                        <br/>Öffnungszeiten:<br/><span id="oeffnungszeiten"></span>
                     </div>
                     <hr></hr>
 
@@ -112,3 +112,20 @@
         </div>
     </div>
 </div>
+
+<script>
+  var a = "{{ trans("Ceres::Template.contactOpeningTimes") }}".split(",");
+  splitOeffnung();
+
+  function splitOeffnung(){
+    var temp = "";
+    for (var i = 0; i<=(a.length-1); i++){
+      temp = temp + a[i];
+      if (i<(a.length-1)){
+        temp = temp + "<br/>"
+      }
+    }
+
+    document.getElementById("oeffnungszeiten").innerHTML = temp;
+  }
+</script>
