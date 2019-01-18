@@ -125,7 +125,11 @@
         temp = temp + "<br/>"
       }
     }
-
+    try{
+      document.getElementById("oeffnungszeitenKontakt").innerHTML = temp;
+    }catch(err){
+      /*Nichts*/
+    }
     document.getElementById("oeffnungszeiten").innerHTML = temp;
   }
 </script>
