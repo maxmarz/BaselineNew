@@ -271,9 +271,9 @@
         "header.shop_highlight_4": {
           "type": "inputText",
           "required": false,
-          "label": "Config.headerShopHighlight3Label",
+          "label": "Config.headerShopHighlight4Label",
           "options": {
-            "defaultValue": "Alles auf Lager"
+            "defaultValue": "Kontakt"
           }
         },
         "header.shop_highlight_1EN": {
