@@ -237,6 +237,10 @@
                 "value": "3",
                 "caption": "Config.headerNumberOfHighlightsPossibleValue-3"
               }
+              {
+                "value": "4",
+                "caption": "Config.headerNumberOfHighlightsPossibleValue-4"
+              }
             ]
           }
         },
@@ -257,6 +261,14 @@
           }
         },
         "header.shop_highlight_3": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.headerShopHighlight3Label",
+          "options": {
+            "defaultValue": "Alles auf Lager"
+          }
+        },
+        "header.shop_highlight_4": {
           "type": "inputText",
           "required": false,
           "label": "Config.headerShopHighlight3Label",
@@ -286,6 +298,14 @@
           "label": "Config.headerShopHighlight3LabelEN",
           "options": {
             "defaultValue": "Alles auf Lager"
+          }
+        },
+        "header.shop_highlight_4EN": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.headerShopHighlight4LabelEN",
+          "options": {
+            "defaultValue": "Kontakt"
           }
         },
         "header.megamenu": {
