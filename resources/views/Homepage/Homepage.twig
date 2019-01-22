@@ -44,7 +44,11 @@
               </ol>
               <span></span>
               <div class="carousel-inner" style="position: relative;">
+                {% if({{ config('CeresBaseline.default.karussell1') }} is empty) %}
+                  <div class="carousel-item active" style="background-image: url({{ plugin_path('CeresBaseline') }}/images/karussell/bild01.jpeg);">
+                {% else %}
                   <div class="carousel-item active" style="background-image: url({{ config('CeresBaseline.default.karussell1') }});">
+                {% endif %}
                       <div class="carousel-caption d-none d-md-block" style="background-color: lightgrey; opacity: 0.8;">
                           {% if (companyLogoNav is empty)  %}
                             <img src="{{ plugin_path('CeresBaseline') }}/images/baseline-logo.png" style="width: 50%; max-width: 400px;"></img>
@@ -56,30 +60,25 @@
                           </p>
                       </div>
                   </div>
-                  <div class="carousel-item" style="background-image: url({{ plugin_path('CeresBaseline') }}/images/karussell/bild02.jpeg);">
-                      <div class="carousel-caption d-none d-md-block" style="background-color: lightgrey; opacity: 0.8;">
-                        {% if (companyLogoNav is empty)  %}
-                          <img src="{{ plugin_path('CeresBaseline') }}/images/baseline-logo.png" style="width: 50%; max-width: 400px;"></img>
-                        {% else %}
-                          <img src="{{ companyLogoNav }}" style="width: 50%; max-width: 400px;"></img>
-                        {% endif %}
+
+                  {% if({{ config('CeresBaseline.default.karussell1') }} is empty) %}
+
+                  {% else %}
+                    {% for i in 2..5 %}
+                      <div class="carousel-item" style="background-image: url({{ config('CeresBaseline.default.karussell' ~ i) }});">
+                        <div class="carousel-caption d-none d-md-block" style="background-color: lightgrey; opacity: 0.8;">
+                          {% if (companyLogoNav is empty)  %}
+                            <img src="{{ plugin_path('CeresBaseline') }}/images/baseline-logo.png" style="width: 50%; max-width: 400px;"></img>
+                          {% else %}
+                            <img src="{{ companyLogoNav }}" style="width: 50%; max-width: 400px;"></img>
+                          {% endif %}
                           <p>
-                              <a href="" class="btn-own btn-outline-dark" style="width: 40%; z-index: 11;">Mehr erfahren</a>
+                            <a href="" class="btn-own btn-outline-dark" style="width: 40%; z-index: 11;">Mehr erfahren</a>
                           </p>
+                        </div>
                       </div>
-                  </div>
-                  <div class="carousel-item" style="background-image: url({{ plugin_path('CeresBaseline') }}/images/karussell/bild03.jpeg);">
-                      <div class="carousel-caption d-none d-md-block" style="background-color: lightgrey; opacity: 0.8;">
-                        {% if (companyLogoNav is empty)  %}
-                          <img src="{{ plugin_path('CeresBaseline') }}/images/baseline-logo.png" style="width: 50%; max-width: 400px;"></img>
-                        {% else %}
-                          <img src="{{ companyLogoNav }}" style="width: 50%; max-width: 400px;"></img>
-                        {% endif %}
-                          <p>
-                              <a href="" class="btn-own btn-outline-dark" style="width: 40%; z-index: 11;">Mehr erfahren</a>
-                          </p>
-                      </div>
-                  </div>
+                    {% endfor %}
+                  {% endif %}
               </div>
               <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                   <span class="swiper-button-prev" aria-hidden="false"></span>
