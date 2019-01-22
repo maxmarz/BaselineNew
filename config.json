@@ -276,6 +276,38 @@
             "defaultValue": "Kontakt"
           }
         },
+        "header.shop_highlight_link_1": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.headerShopHighlight1Link",
+          "options": {
+            "defaultValue": "Kostenloser Versand"
+          }
+        },
+        "header.shop_highlight_link_2": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.headerShopHighlight2Link",
+          "options": {
+            "defaultValue": "Große Markenvielfalt"
+          }
+        },
+        "header.shop_highlight_link_3": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.headerShopHighlight3Link",
+          "options": {
+            "defaultValue": "Alles auf Lager"
+          }
+        },
+        "header.shop_highlight_link_4": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.headerShopHighlight4Link",
+          "options": {
+            "defaultValue": "Kontakt"
+          }
+        },
         "header.shop_highlight_1EN": {
           "type": "inputText",
           "required": false,
