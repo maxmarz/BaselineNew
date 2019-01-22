@@ -297,7 +297,7 @@
           "required": false,
           "label": "Config.headerShopHighlight3Link",
           "options": {
-            "defaultValue": "Alles auf Lager"
+            "defaultValue": "/weiterfuehrende-links/service-und-lieferfragen/"
           }
         },
         "header.shop_highlight_link_4": {
@@ -305,7 +305,7 @@
           "required": false,
           "label": "Config.headerShopHighlight4Link",
           "options": {
-            "defaultValue": "Kontakt"
+            "defaultValue": "/contact/"
           }
         },
         "header.shop_highlight_1EN": {
