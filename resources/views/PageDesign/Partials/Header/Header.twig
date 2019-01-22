@@ -33,11 +33,11 @@
                             <ul class="list-highlight">
                                 {% if lang == "en" %}
                                     {% for i in 1..numberOfHighlights %}
-                                        <li class="list-inline-item" data-plentyflow-element="text"><i class="fa fa-check" aria-hidden="true"></i> {{ config('CeresBaseline.header.shop_highlight_' ~ i ~ 'EN') }}</li>
+                                        <a href="{{ config('CeresBaseline.header.shop_highlight_link_' ~ i) }}"><li class="list-inline-item" data-plentyflow-element="text"><i class="fa fa-check" aria-hidden="true"></i> {{ config('CeresBaseline.header.shop_highlight_' ~ i ~ 'EN') }}</li></a>
                                     {% endfor %}
                                 {% else %}
                                     {% for i in 1..numberOfHighlights %}
-                                        <li class="list-inline-item" data-plentyflow-element="text"><i class="fa fa-check" aria-hidden="true"></i> {{ config('CeresBaseline.header.shop_highlight_' ~ i) }}</li>
+                                        <a href="{{ config('CeresBaseline.header.shop_highlight_link_' ~ i) }}"><li class="list-inline-item" data-plentyflow-element="text"><i class="fa fa-check" aria-hidden="true"></i> {{ config('CeresBaseline.header.shop_highlight_' ~ i) }}</li></a>
                                     {% endfor %}
                                 {% endif %}
                             </ul>

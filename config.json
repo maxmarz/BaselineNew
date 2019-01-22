@@ -281,7 +281,7 @@
           "required": false,
           "label": "Config.headerShopHighlight1Link",
           "options": {
-            "defaultValue": "Kostenloser Versand"
+            "defaultValue": "/weiterfuehrende-links/unternehmen/"
           }
         },
         "header.shop_highlight_link_2": {
@@ -289,7 +289,7 @@
           "required": false,
           "label": "Config.headerShopHighlight2Link",
           "options": {
-            "defaultValue": "Große Markenvielfalt"
+            "defaultValue": "/weiterfuehrende-links/zahlung-und-lieferung/"
           }
         },
         "header.shop_highlight_link_3": {
