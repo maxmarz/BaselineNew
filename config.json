@@ -43,6 +43,46 @@
           "options": {
             "defaultValue": "false"
           }
+        },
+        "default.karussell1": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.KarussellBild1",
+          "options": {
+            "defaultValue": ""
+          }
+        },
+        "default.karussell2": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.KarussellBild2",
+          "options": {
+            "defaultValue": ""
+          }
+        },
+        "default.karussell3": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.KarussellBild3",
+          "options": {
+            "defaultValue": ""
+          }
+        },
+        "default.karussell4": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.KarussellBild4",
+          "options": {
+            "defaultValue": ""
+          }
+        },
+        "default.karussell5": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.KarussellBild5",
+          "options": {
+            "defaultValue": ""
+          }
         }
       }
     },
@@ -211,7 +251,7 @@
           "required": false,
           "label": "Config.headerCompanyLogoLabel",
           "options": {
-            "defaultValue": ""
+            "defaultValue": "https://cdn02.plentymarkets.com/iow84t9eqpek/frontend/techniworld_logo.png"
           }
         },
         "header.number_of_highlights": {
@@ -219,7 +259,7 @@
           "required": false,
           "label": "Config.headerNumberOfHighlightsLabel",
           "options": {
-            "defaultValue": "3",
+            "defaultValue": "4",
             "selectBoxValues": [
               {
                 "value": "0",
@@ -249,7 +289,7 @@
           "required": false,
           "label": "Config.headerShopHighlight1Label",
           "options": {
-            "defaultValue": "Kostenloser Versand"
+            "defaultValue": "Unternehmen"
           }
         },
         "header.shop_highlight_2": {
@@ -257,7 +297,7 @@
           "required": false,
           "label": "Config.headerShopHighlight2Label",
           "options": {
-            "defaultValue": "Große Markenvielfalt"
+            "defaultValue": "Zahlung und Lieferung"
           }
         },
         "header.shop_highlight_3": {
@@ -265,7 +305,7 @@
           "required": false,
           "label": "Config.headerShopHighlight3Label",
           "options": {
-            "defaultValue": "Alles auf Lager"
+            "defaultValue": "Service- und Lieferfragen"
           }
         },
         "header.shop_highlight_4": {
