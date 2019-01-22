@@ -44,7 +44,7 @@
               </ol>
               <span></span>
               <div class="carousel-inner" style="position: relative;">
-                {% if({{ config('CeresBaseline.default.karussell1') }} is empty) %}
+                {% if {{ config('CeresBaseline.default.karussell1') }} is empty) %}
                   <div class="carousel-item active" style="background-image: url({{ plugin_path('CeresBaseline') }}/images/karussell/bild01.jpeg);">
                 {% else %}
                   <div class="carousel-item active" style="background-image: url({{ config('CeresBaseline.default.karussell1') }});">
@@ -89,8 +89,6 @@
                   <span class="sr-only">Next</span>
               </a>
           </section>
-
-
 
             <div class="container-max" data-plentyflow-section="Highlights" data-plentyflow-section-element="space, block">
                 <div class="row mt-xs-15 highlights">
