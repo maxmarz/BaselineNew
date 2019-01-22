@@ -6,6 +6,7 @@
 {% set sliderCategories = config('CeresBaseline.default.slider') | find("[0-9]+") %}
 {% set latestItemsList = services.item.getLatestItems(12) %}
 {% set companyLogoNav   = config("CeresBaseline.header.company_logo") %}
+{% set karusell1   = config("CeresBaseline.default.karussell1") %}
 
 {% set companyName  = trans("Ceres::Template.headerCompanyName") %}
 
@@ -44,7 +45,7 @@
               </ol>
               <span></span>
               <div class="carousel-inner" style="position: relative;">
-                {% if {{ config('CeresBaseline.default.karussell1') }} is empty) %}
+                {% if karusell1 is empty) %}
                   <div class="carousel-item active" style="background-image: url({{ plugin_path('CeresBaseline') }}/images/karussell/bild01.jpeg);">
                 {% else %}
                   <div class="carousel-item active" style="background-image: url({{ config('CeresBaseline.default.karussell1') }});">
