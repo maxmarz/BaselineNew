@@ -50,6 +50,12 @@
         </div>
 
 
+        <style>
+          .category-banner{}
+            background-image: url('{{ config('CeresBaseline.default.karussell1') }}');
+          }
+        </style>
+
         <pagination template="#vue-pagination"></pagination>
                 {#{% include "Ceres::Category.Item.Partials.Pagination" with { 'paginatedResult': paginatedResult } %}#}
 
@@ -63,9 +69,3 @@
         <title>{{ trans("Ceres::Template.itemSearchResults") }} {{ searchString }} | {{ ceresConfig.header.companyName }}</title>
     {% endif %}
 {% endblock %}
-
-<style>
-  .category-banner{}
-    background-image: url('{{ config('CeresBaseline.default.karussell1') }}');
-  }
-</style>
