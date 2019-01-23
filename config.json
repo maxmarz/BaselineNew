@@ -525,6 +525,14 @@
             "defaultValue": "false"
           }
         },
+        "single.kategorieBild": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.kategorieBild",
+          "options": {
+            "defaultValue": ""
+          }
+        },
         "single.replacementPartTitle": {
           "type": "inputText",
           "required": false,
