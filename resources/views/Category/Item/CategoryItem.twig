@@ -17,7 +17,7 @@
 
     <div id="category" class="categoriegrid page-content container-max" data-plentyflow-pagename="Kategorieseite">
         {% if (category.details[0].imagePath != "") %}
-            <div class="category-banner" data-plentyflow-section="Kategorie-Banner" style="background-image: url('{{ config('CeresBaseline.default.karussell1') }}');">
+            <div class="category-banner" data-plentyflow-section="Kategorie-Banner" style="background-image: url('{{ config('CeresBaseline.single.kategorienBild') }}');">
                 <div class="pos-center" data-plentyflow-modul="Banner" data-plentyflow-modul-element="block, display">
                     <h1 data-plentyflow-element="title" class="category-title">{{ category.details[0].name }}</h1>
                     <div class="visible-md visible-lg">
