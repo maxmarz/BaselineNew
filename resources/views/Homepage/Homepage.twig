@@ -69,8 +69,7 @@
                     {% set karussellTemp   = config("CeresBaseline.default.karussell" ~ i) %}
                     {% if (karussellTemp is empty) %}
                     {% else %}
-                    <a href="{{ config('CeresBaseline.default.karussell_link' ~ i) }}">
-                      <div class="carousel-item" style="background-image: url({{ config('CeresBaseline.default.karussell' ~ i) }});">
+                      <a href="{{ config('CeresBaseline.default.karussell_link' ~ i) }}" class="carousel-item" style="background-image: url({{ config('CeresBaseline.default.karussell' ~ i) }});">
                         <div class="carousel-caption d-none d-md-block" style="background-color: lightgrey; opacity: 0.8;">
                           {% if (companyLogoNav is empty)  %}
                             <img src="{{ plugin_path('CeresBaseline') }}/images/baseline-logo.png" style="width: 50%; max-width: 400px;"></img>
@@ -78,11 +77,10 @@
                             <img src="{{ companyLogoNav }}" style="width: 50%; max-width: 400px;"></img>
                           {% endif %}
                           <p>
-                            <a href="" class="btn-own btn-outline-dark" style="width: 40%; z-index: 11;">Mehr erfahren</a>
+                            Mehr erfahren
                           </p>
                         </div>
-                      </div>
-                    </a>
+                      </a>
                     {% endif %}
                 {% endfor %}
               </div>

@@ -33,11 +33,11 @@
                             <ul class="list-highlight">
                                 {% if lang == "en" %}
                                     {% for i in 1..numberOfHighlights %}
-                                        <a href="{{ config('CeresBaseline.header.shop_highlight_link_' ~ i) }}"><li class="list-inline-item" data-plentyflow-element="text"><i class="fa" aria-hidden="true"></i> {{ config('CeresBaseline.header.shop_highlight_' ~ i ~ 'EN') }}</li></a> <!-- class="fa fa-check"-->
+                                        <a href="{{ config('CeresBaseline.header.shop_highlight_link_' ~ i) }}" style="color: white;"><li class="list-inline-item" data-plentyflow-element="text"><i class="fa" aria-hidden="true"></i> {{ config('CeresBaseline.header.shop_highlight_' ~ i ~ 'EN') }}</li></a> <!-- class="fa fa-check"-->
                                     {% endfor %}
                                 {% else %}
                                     {% for i in 1..numberOfHighlights %}
-                                        <a href="{{ config('CeresBaseline.header.shop_highlight_link_' ~ i) }}"><li class="list-inline-item" data-plentyflow-element="text"><i class="fa" aria-hidden="true"></i> {{ config('CeresBaseline.header.shop_highlight_' ~ i) }}</li></a>
+                                        <a href="{{ config('CeresBaseline.header.shop_highlight_link_' ~ i) }}" style="color: white;"><li class="list-inline-item" data-plentyflow-element="text"><i class="fa" aria-hidden="true"></i> {{ config('CeresBaseline.header.shop_highlight_' ~ i) }}</li></a>
                                     {% endfor %}
                                 {% endif %}
                             </ul>
