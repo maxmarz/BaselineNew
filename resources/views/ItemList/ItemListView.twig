@@ -10,7 +10,7 @@
     {{ component( "Ceres::ItemList.Components.Filter.ItemFilterTagList") }}
 
     <div id="category" class="categoriegrid container-max">
-        <div class="category-banner mt-xs-15 mb-xs">
+        <div class="category-banner mt-xs-15 mb-xs" style="background-image: url({{ config('CeresBaseline.default.karussell1') }});">
             <div class="pos-center">
                 <h1 class="h2" id="searchPageTitle">{{ trans("Ceres::Template.itemSearchResults") }} {{ searchString }}</h1>
             </div>
@@ -63,4 +63,3 @@
         <title>{{ trans("Ceres::Template.itemSearchResults") }} {{ searchString }} | {{ ceresConfig.header.companyName }}</title>
     {% endif %}
 {% endblock %}
-
