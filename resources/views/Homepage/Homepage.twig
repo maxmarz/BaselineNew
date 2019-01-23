@@ -47,7 +47,7 @@
                   {% set karussellTemp   = config("CeresBaseline.default.karussell" ~ i) %}
                   {% if (karussellTemp is empty) %}
                   {% else %}
-                    <li data-target="#carouselExampleIndicators" data-slide-to="" ~ (i-1)></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="{% i - 1 %}"></li>
                   {% endif %}
                 {% endfor %}
               </ol>
