@@ -83,6 +83,46 @@
           "options": {
             "defaultValue": ""
           }
+        },
+        "default.karussell_link1": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.KarussellURL1",
+          "options": {
+            "defaultValue": ""
+          }
+        },
+        "default.karussell_link2": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.KarussellURL2",
+          "options": {
+            "defaultValue": ""
+          }
+        },
+        "default.karussell_link3": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.KarussellURL3",
+          "options": {
+            "defaultValue": ""
+          }
+        },
+        "default.karussell_link4": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.KarussellURL4",
+          "options": {
+            "defaultValue": ""
+          }
+        },
+        "default.karussell_link5": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.KarussellURL5",
+          "options": {
+            "defaultValue": ""
+          }
         }
       }
     },

@@ -42,9 +42,12 @@
                   <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                   <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                   <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
               </ol>
               <span></span>
               <div class="carousel-inner" style="position: relative;">
+                <a href="{{ config('CeresBaseline.default.karussellURL1') }}">
                 {% if (karusell1 is empty) %}
                   <div class="carousel-item active" style="background-image: url({{ plugin_path('CeresBaseline') }}/images/karussell/bild01.jpeg);">
                 {% else %}
