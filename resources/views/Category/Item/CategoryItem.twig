@@ -15,7 +15,7 @@
     {{ component( "Ceres::ItemList.Components.ItemsPerPage") }}
     {{ component( "Ceres::ItemList.Components.Pagination") }}
 
-    <div id="category" class="categoriegrid page-content container-max" data-plentyflow-pagename="Kategorieseite">
+    <div id="category" class="categoriegrid page-content container-max" data-plentyflow-pagename="Kategorieseite" style="background-image: url('{{ config('CeresBaseline.single.kategorienBild') }}')">
         {% if (category.details[0].imagePath != "") %}
             <div class="category-banner" data-plentyflow-section="Kategorie-Banner">
                 <div class="pos-center" data-plentyflow-modul="Banner" data-plentyflow-modul-element="block, display">
