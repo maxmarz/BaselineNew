@@ -15,7 +15,7 @@
     {{ component( "Ceres::ItemList.Components.ItemsPerPage") }}
     {{ component( "Ceres::ItemList.Components.Pagination") }}
 
-    <div id="category" class="categoriegrid page-content container-max" data-plentyflow-pagename="Kategorieseite" style="background-image: url('{{ config('CeresBaseline.single.kategorienBild') }}')">
+    <div id="category" class="categoriegrid page-content container-max" data-plentyflow-pagename="Kategorieseite" style="background-image: url('{{ config('CeresBaseline.single.kategorieBild') }}')">
         {% if (category.details[0].imagePath != "") %}
             <div class="category-banner" data-plentyflow-section="Kategorie-Banner">
                 <div class="pos-center" data-plentyflow-modul="Banner" data-plentyflow-modul-element="block, display">
@@ -27,7 +27,7 @@
                         {% endif %}
                     </div>
                 </div>
-                <div class="category-img mt-xs-15" style="background-image: url('{{ config('CeresBaseline.single.kategorienBild') }}')"></div>
+                <div class="category-img mt-xs-15" style="background-image: url('{{ config('CeresBaseline.single.kategorieBild') }}')"></div>
             </div>
         {% else %}
             <div class="category-banner without-image mt-xs-15" data-plentyflow-section="Kategorie-Banner">

@@ -528,7 +528,7 @@
         "single.kategorieBild": {
           "type": "inputText",
           "required": false,
-          "label": "Config.kategorieBild",
+          "label": "Config.kategorieBildURL",
           "options": {
             "defaultValue": ""
           }
