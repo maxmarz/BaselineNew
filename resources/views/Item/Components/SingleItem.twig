@@ -16,7 +16,7 @@
                         </div>
                     </div>
                 </div>
-
+                <!-- EAN13: ${ currentVariation.barcodes[0].code }-->
                 <div id="IcecatLive"></div>
                 <!--script type="text/javascript">
                     setTimeout(function(){IcecatLive.getDatasheet('#IcecatLive',{'UserName': 'openIcecat-live','Brand':'${ currentVariation.item.manufacturer.externalName }'},'de');}, 200);
@@ -245,13 +245,6 @@
                                                 <td>{{ trans("Ceres::Template.singleItemWeight") }}</td>
                                                 <td>${ currentVariation.variation.weightG } g</td>
                                             </tr>
-                                        {% endif %}
-
-                                        {% if ('item.variationBarcodes' in itemData or 'all' in itemData) %}
-                                          <tr class="single-description" v-if="currentVariation.barcodes[0].code !== ''">
-                                            <td>EAN:</td>
-                                            <td>${ currentVariation.barcodes[0].code }</td>
-                                          </tr>
                                         {% endif %}
 
                                         {% if 'item.weightNetG' in itemData or 'all' in itemData %}
