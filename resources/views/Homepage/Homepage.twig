@@ -48,7 +48,7 @@
                   {% if (karussellTemp is empty) %}
                   {% else %}
 
-                    <li data-target="#carouselExampleIndicators" data-slide-to="{{ i }}"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="{{ i - 1 }}"></li>
                   {% endif %}
                 {% endfor %}
               </ol>
