@@ -16,7 +16,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- EAN13: ${ currentVariation.barcodes[0].code }-->
+
                 <div id="IcecatLive"></div>
                 <!--script type="text/javascript">
                     setTimeout(function(){IcecatLive.getDatasheet('#IcecatLive',{'UserName': 'openIcecat-live','Brand':'${ currentVariation.item.manufacturer.externalName }'},'de');}, 200);
@@ -178,6 +178,11 @@
                                     </div>
                                 </div>
                             {% endif %}
+
+                            <span class="single-description" v-for="barcode in currentVariation.barcodes">
+                              <b v-if="barcode.type === 'GTIN_13'">EAN:</b>
+                              <span v-if="barcode.type === 'GTIN_13'">${ barcode.code }</span>
+                            </span>
 
                             <div :class="{ 'active': !isDescriptionTabActive && !isTechnicalDataTabActive }" class="tab-pane" id="assessments-details" role="tabpanel">
                                 <div class="m-y-2">
