@@ -7,7 +7,6 @@
 
 <script type="x/template" id="vue-single-item">
     <div>
-        <script type="text/javascript">setTimeout(function(){IcecatLive.getDatasheet('#IcecatLive', {'GTIN': '1234567891234',}, 'de');}, 200);
         <div class="single container-max page-content">
             <div class="row m-t-2">
                 <div class="col-md-6 single-leftside">
@@ -17,6 +16,11 @@
                         </div>
                     </div>
                 </div>
+
+                <div id="IcecatLive"></div>
+                <script type="text/javascript">
+                    setTimeout(function(){IcecatLive.getDatasheet('#IcecatLive',{'UserName': 'openIcecat-live','Brand':'HP','ProductCode':'F0Y97EA'},'de');}, 200);
+                </script>
 
                 <!-- ITEM DETAIL -->
                 <div class="col-md-6 single-rightside m-t-1 p-l-2">
