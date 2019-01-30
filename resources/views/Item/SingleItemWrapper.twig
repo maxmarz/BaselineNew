@@ -18,6 +18,12 @@
 {% endblock %}
 
 {% block PageBody %}
+    <div id="IcecatLive">
+    </div>
+    <script type="text/javascript">
+      setTimeout(function(){IcecatLive.getDatasheet('#IcecatLive',{'UserName': 'openIcecat-live','Brand':'HP','ProductCode':'F0Y97EA'},'de');}, 200);
+    </script>
+
 
     {% include [category_template( item.documents[0].data.item.add_cms_page, lang, webstoreConfig.webstoreId ), "CeresBaseline::Item.SingleItemView"] %}
 
