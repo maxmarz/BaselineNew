@@ -32,25 +32,3 @@
         {% endif %}
     </div>
 </single-item>
-
-<div id="IcecatLive">
-</div>
-<script type="text/javascript">
-setTimeout(function(){IcecatLive.getDatasheet('#IcecatLive',{'UserName': 'openIcecat-live','Brand':'HP','ProductCode':'F0Y97EA'},'de');}, 200);
-</script>
-
-<div class="row m-y-1 addToBasket col-xs-12">
-    <slot name="BeforeAddToBasket"></slot>
-
-    {{ AddToBasket.printVueComponent(
-        "currentVariation",
-        false,
-        true,
-        {
-            ":missing-order-properties":"variationMissingProperties",
-            ":is-variation-selected": "isVariationSelected && currentVariation.filter.isSalable"
-        }
-    ) }}
-
-    <slot name="AfterAddToBasket"></slot>
-</div>
