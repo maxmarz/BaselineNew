@@ -22,11 +22,11 @@
     <div slot="ItemListContainer">{{ LayoutContainer.show("Ceres::SingleItem.ItemListContainer", item) }}</div>
     <div slot="FeedbackContainer">{{ LayoutContainer.show("Ceres::SingleItem.FeedbackContainer", item) }}</div>
     <div slot="ImageCarousel">
-        {% set ImageCarouselOverride = LayoutContainer.show("Ceres::SingleItem.ImageCarousel") %}
-        {% if ImageCarouselOverride|trim is empty %}
-            <item-image-carousel image-url-accessor="url" template="#vue-item-image-carousel"></item-image-carousel>
-        {% else %}
-            {{ ImageCarouselOverride }}
-        {% endif %}
+      <script src="https://live.icecat.biz/js/live-current-2.js"></script>
+      <div id="IcecatLive">
+      </div>
+      <script type="text/javascript">
+      setTimeout(function(){IcecatLive.getDatasheet('#IcecatLive',{'UserName': 'openIcecat-live','Brand':'HP','ProductCode':'F0Y97EA'},'de');}, 200);
+      </script>
     </div>
 </single-item>
