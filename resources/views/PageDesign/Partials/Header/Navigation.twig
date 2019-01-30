@@ -29,9 +29,9 @@
         <!--       LOGO       -->
         <!--        END       -->
 
-        {# if showHeaderNavBar == "top" or showHeaderNavBar == "both" #}{# or not services.template.isCategory() #}
+        {% if showHeaderNavBar == "top" or showHeaderNavBar == "both" %}{# or not services.template.isCategory() #}
             {% include "CeresBaseline::PageDesign.Partials.Header.NavigationList" %}
-        {# endif #}
+        {% endif %}
 
         <div class="search-desktop hidden-md-down pull-lg-right" data-plentyflow-modul="Search-Icon">
             <a href="javascript: suchfeld()"><button class="search-trigger btn">
