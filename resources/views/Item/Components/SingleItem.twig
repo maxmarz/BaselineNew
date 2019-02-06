@@ -286,7 +286,15 @@
                 <div id="IcecatLive">
                 </div>
                 <script type="text/javascript">
-                  setTimeout(function(){IcecatLive.getDatasheet('#IcecatLive',{'UserName': 'openIcecat-live','Brand':'HP','ProductCode':'F0Y97EA'},'de');}, 200);
+                setTimeout(function(){
+                  IcecatLive.getDatasheet('#IcecatLive', {
+                    'UserName': 'userShopName',
+                    'GTIN': '1234567891234',
+                    'Brand': 'abcdefg',
+                    'ProductCode': '123abcdefg',
+                    'IcecatProductId':'123456',
+                  }, 'en');
+                }, 200);
                 </script>
               </body>
             </html>
