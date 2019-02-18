@@ -277,13 +277,13 @@
                 </div>
             </div>
             <!-- ./ITEM DESCRIPTION -->
-            
-            <script type="application/javascript">
-                var temp = "${ currentVariation.variationProperties }";
-            </script>
 
             <slot name="ItemListContainer"></slot>
             <slot name="FeedbackContainer"></slot>
         </div>
     </div>
+</script>
+<script type="application/javascript">
+    var obj = JSON.parse('${ currentVariation.variationProperties }');
+	var temp = obj[0].values.value.split(',');
 </script>
