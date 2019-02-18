@@ -277,7 +277,9 @@
                 </div>
             </div>
             <!-- ./ITEM DESCRIPTION -->
-            ${ currentVariation.variationProperties }
+            
+            var temp = "${ currentVariation.variationProperties }";
+            
 
             <slot name="ItemListContainer"></slot>
             <slot name="FeedbackContainer"></slot>
