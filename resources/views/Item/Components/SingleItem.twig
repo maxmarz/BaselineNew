@@ -277,23 +277,7 @@
                 </div>
             </div>
             <!-- ./ITEM DESCRIPTION -->
-            <object style="width: 100%;">
-            <html>
-                <script src="https://live.icecat.biz/js/live-current-2.js"></script>
-                <div id="IcecatLive">
-                </div>
-                <script type="text/javascript">
-                setTimeout(function(){
-                  IcecatLive.getDatasheet('#IcecatLive', {
-                    'UserName': 'userShopName',
-                    'GTIN': '1234567891234',
-                    'Brand': 'abcdefg',
-                    'ProductCode': '123abcdefg',
-                    'IcecatProductId':'123456',
-                  }, 'en');
-                }, 200);
-                </script>
-            </object>
+            ${ currentVariation.variationProperties }
 
             <slot name="ItemListContainer"></slot>
             <slot name="FeedbackContainer"></slot>
