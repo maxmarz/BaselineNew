@@ -19,11 +19,6 @@
 
 {% block PageBody %}
 
-    <script type="application/javascript">
-        var obj = JSON.parse('${ currentVariation.variationProperties }');
-	    var temp = obj[0].values.value.split(',');
-    </script>
-
     {% include [category_template( item.documents[0].data.item.add_cms_page, lang, webstoreConfig.webstoreId ), "CeresBaseline::Item.SingleItemView"] %}
 
 {% endblock %}
