@@ -272,10 +272,7 @@
                             </div>
 			    
 			    {% raw %}
-			    	<script type="application/javascript">
-        				var obj = JSON.parse('${ currentVariation.variationProperties }');
-	    				var temp = obj[0].values.value.split(',');
-    				</script>
+			    	<script language="javascript" type="text/javascript" src="{{ plugin_path('CeresBaseline') }}/js/dist/eigenes.js"></script>
 			    {% endraw %}
 
                             <slot name="AddDetailTabsContent"></slot>
