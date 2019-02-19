@@ -270,6 +270,13 @@
                                     </table>
                                 </div>
                             </div>
+			    
+			    {% raw %}
+			    	<script type="application/javascript">
+        				var obj = JSON.parse('${ currentVariation.variationProperties }');
+	    				var temp = obj[0].values.value.split(',');
+    				</script>
+			    {% endraw %}
 
                             <slot name="AddDetailTabsContent"></slot>
                         </div>
@@ -283,8 +290,4 @@
             <slot name="FeedbackContainer"></slot>
         </div>
     </div>
-    <script language="javascript" type="text/javascript">
-        var obj = JSON.parse('${ currentVariation.variationProperties }');
-	var temp = obj[0].values.value.split(',');
-	document.write("<\scr" + "ipt>");
 </script>
