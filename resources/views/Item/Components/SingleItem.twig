@@ -272,20 +272,14 @@
                             </div>
 
                             <slot name="AddDetailTabsContent"></slot>
-			    
-			    {% raw %}
-			    	<script language="javascript" type="text/javascript" src="{{ plugin_path('CeresBaseline') }}/js/dist/eigenes.js"/>
-			    {% endraw %}
                         </div>
                     </div>
                 </div>
             </div>
             <!-- ./ITEM DESCRIPTION -->
-	    <p>Text</p>
-           <div id="kurztext" style="width: 0px; height: 0px; overflow: hidden;">${ currentVariation.variationProperties }</div>
-	   <div id="kurztextTest" style="width: 0px; height: 0px; overflow: hidden;">${ currentVariation.variationProperties[0].values.value }</div>
-
-            <slot name="ItemListContainer"></slot>
+            <div id="kurztext" style="width: 0px; height: 0px; overflow: hidden;">${ currentVariation.variationProperties }</div>
+            
+	    <slot name="ItemListContainer"></slot>
             <slot name="FeedbackContainer"></slot>
         </div>
     </div>
